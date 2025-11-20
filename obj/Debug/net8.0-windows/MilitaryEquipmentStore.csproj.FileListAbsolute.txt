@@ -1,7 +1,4 @@
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.csproj.AssemblyReference.cache
-D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Form1.resources
-D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Forms.Auth.LoginForm.resources
-D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Forms.Auth.RegisterForm.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.csproj.GenerateResource.cache
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.GeneratedMSBuildEditorConfig.editorconfig
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.AssemblyInfoInputs.cache
@@ -32,3 +29,13 @@ D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\ref
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.pdb
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.genruntimeconfig.cache
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\ref\MilitaryEquipmentStore.dll
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.sourcelink.json
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Modal_windows.AddManagerForm.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Modal_windows.EditManagerForm.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Auth.LoginUserControl.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Forms.Form1.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.MainUserControl.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.CatalogUserControl.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ProductCardUserControl.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ManageManagersControl.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ManageProductsControl.resources

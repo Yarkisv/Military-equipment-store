@@ -9,7 +9,7 @@ namespace MilitaryEquipmentStore
 {
     internal class DbConfig
     {
-        public static MySqlConnection connection = new MySqlConnection("server=localhost;database=WeaponDesktop;Uid=root;Pwd=077604");
+        public static MySqlConnection connection = new MySqlConnection("server=localhost;database=military_equipment_store;Uid=root;Pwd=077604");
 
         public static void Open()
         {
@@ -46,6 +46,24 @@ namespace MilitaryEquipmentStore
             {
                 Close();
             }
+        }
+
+        public static MySqlDataReader ReadData(string query)
+        {
+            MySqlDataReader reader = null;
+
+            try
+            {
+                Open();
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return reader;
         }
     }
 }

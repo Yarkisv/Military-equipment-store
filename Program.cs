@@ -1,4 +1,4 @@
-using MilitaryEquipmentStore.Forms.Auth;
+using MilitaryEquipmentStore.Forms;
 
 namespace WeaponDesktop
 {
@@ -8,7 +8,7 @@ namespace WeaponDesktop
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            Application.Run(new Form1());
         }
     }
 }
