@@ -28,60 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridManagers = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            fullname = new DataGridViewTextBoxColumn();
-            phone = new DataGridViewTextBoxColumn();
-            email = new DataGridViewTextBoxColumn();
-            change = new DataGridViewButtonColumn();
-            delete = new DataGridViewButtonColumn();
             button1 = new Button();
+            dataGridManagers = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Fullname = new DataGridViewTextBoxColumn();
+            Phone = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewButtonColumn();
+            Delete = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridManagers).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridManagers
-            // 
-            dataGridManagers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridManagers.Columns.AddRange(new DataGridViewColumn[] { id, fullname, phone, email, change, delete });
-            dataGridManagers.Dock = DockStyle.Fill;
-            dataGridManagers.Location = new Point(0, 30);
-            dataGridManagers.Name = "dataGridManagers";
-            dataGridManagers.Size = new Size(150, 120);
-            dataGridManagers.TabIndex = 0;
-            // 
-            // id
-            // 
-            id.Name = "id";
-            // 
-            // fullname
-            // 
-            fullname.Name = "fullname";
-            // 
-            // phone
-            // 
-            phone.Name = "phone";
-            // 
-            // email
-            // 
-            email.Name = "email";
-            // 
-            // change
-            // 
-            change.Name = "change";
-            // 
-            // delete
-            // 
-            delete.Name = "delete";
             // 
             // button1
             // 
             button1.Dock = DockStyle.Top;
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
-            button1.Size = new Size(150, 30);
+            button1.Size = new Size(649, 30);
             button1.TabIndex = 1;
             button1.Text = "Add Manager";
             button1.Click += button1_Click;
+            // 
+            // dataGridManagers
+            // 
+            dataGridManagers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridManagers.Columns.AddRange(new DataGridViewColumn[] { Id, Fullname, Phone, Email, Edit, Delete });
+            dataGridManagers.Location = new Point(3, 36);
+            dataGridManagers.Name = "dataGridManagers";
+            dataGridManagers.Size = new Size(644, 436);
+            dataGridManagers.TabIndex = 2;
+            dataGridManagers.CellContentClick += dataGridManagers_CellContentClick_1;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            // 
+            // Fullname
+            // 
+            Fullname.HeaderText = "Fullname";
+            Fullname.Name = "Fullname";
+            // 
+            // Phone
+            // 
+            Phone.HeaderText = "Phone";
+            Phone.Name = "Phone";
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            // 
+            // Edit
+            // 
+            Edit.HeaderText = "Edit";
+            Edit.Name = "Edit";
+            // 
+            // Delete
+            // 
+            Delete.HeaderText = "Delete";
+            Delete.Name = "Delete";
             // 
             // ManageManagersControl
             // 
@@ -90,20 +96,19 @@
             Controls.Add(dataGridManagers);
             Controls.Add(button1);
             Name = "ManageManagersControl";
+            Size = new Size(649, 475);
             ((System.ComponentModel.ISupportInitialize)dataGridManagers).EndInit();
             ResumeLayout(false);
         }
 
-
         #endregion
-
-        private DataGridView dataGridManagers;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn fullname;
-        private DataGridViewTextBoxColumn phone;
-        private DataGridViewTextBoxColumn email;
-        private DataGridViewButtonColumn change;
-        private DataGridViewButtonColumn delete;
         private Button button1;
+        private DataGridView dataGridManagers;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Fullname;
+        private DataGridViewTextBoxColumn Phone;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewButtonColumn Edit;
+        private DataGridViewButtonColumn Delete;
     }
 }

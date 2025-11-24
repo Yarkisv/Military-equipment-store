@@ -22,10 +22,13 @@
     <Compile Update="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Modal windows\AddManagerForm.cs">
+    <Compile Update="Controls\Auth\AddManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Modal windows\EditManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Modal windows\EditProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

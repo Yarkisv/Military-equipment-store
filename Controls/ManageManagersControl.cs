@@ -17,7 +17,7 @@ namespace MilitaryEquipmentStore.Controls
         {
             InitializeComponent();
             LoadManagers();
-                
+
             button1.Dock = DockStyle.Top;
             dataGridManagers.Dock = DockStyle.Fill;
         }
@@ -54,14 +54,11 @@ namespace MilitaryEquipmentStore.Controls
             }
         }
 
-        private void DataGridManagers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridManagers_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            int managerId = Convert.ToInt32(dataGridManagers.Rows[e.RowIndex].Cells["Id"].Value);
 
-            int managerId = Convert.ToInt32(dataGridManagers.Rows[e.RowIndex].Cells["id"].Value);
-
-            if (dataGridManagers.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                dataGridManagers.Columns[e.ColumnIndex].HeaderText == "Change")
+            if (dataGridManagers.Columns[e.ColumnIndex].HeaderText.Equals("Edit"))
             {
                 EditManagerForm editForm = new EditManagerForm(managerId);
                 if (editForm.ShowDialog() == DialogResult.OK)
@@ -70,8 +67,7 @@ namespace MilitaryEquipmentStore.Controls
                 }
             }
 
-            if (dataGridManagers.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                dataGridManagers.Columns[e.ColumnIndex].HeaderText == "Delete")
+            if (dataGridManagers.Columns[e.ColumnIndex].HeaderText.Equals("Delete"))
             {
                 var result = MessageBox.Show(
                     "Delete manager?",

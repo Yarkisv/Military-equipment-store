@@ -34,74 +34,72 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             panel1 = new Panel();
+
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(3, 106);
-            button1.Name = "button1";
-            button1.Size = new Size(174, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Login";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // label1
-            // 
+
+            // panel1 – card style
+            panel1.BackColor = Color.White;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Padding = new Padding(10);
+            panel1.Location = new Point(110, 110);
+            panel1.Size = new Size(200, 170);
+
+            // label1 (Email)
             label1.AutoSize = true;
-            label1.Location = new Point(3, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(36, 15);
-            label1.TabIndex = 1;
+            label1.Location = new Point(10, 10);
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
             label1.Text = "Email";
-            // 
-            // label2
-            // 
+
+            // textBox1 (Email)
+            textBox1.Location = new Point(10, 30);
+            textBox1.Size = new Size(175, 25);
+            textBox1.Font = new Font("Segoe UI", 10F);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+
+            // label2 (Password)
             label2.AutoSize = true;
-            label2.Location = new Point(3, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(57, 15);
-            label2.TabIndex = 2;
+            label2.Location = new Point(10, 65);
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
             label2.Text = "Password";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(3, 33);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(174, 23);
-            textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(3, 77);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(174, 23);
-            textBox2.TabIndex = 4;
-            // 
-            // panel1
-            // 
+
+            // textBox2 (Password)
+            textBox2.Location = new Point(10, 85);
+            textBox2.Size = new Size(175, 25);
+            textBox2.Font = new Font("Segoe UI", 10F);
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.UseSystemPasswordChar = true;
+
+            // button1 (Login)
+            button1.Location = new Point(10, 120);
+            button1.Size = new Size(175, 35);
+            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button1.Text = "Login";
+            button1.BackColor = Color.FromArgb(0, 120, 215);   // Windows blue
+            button1.ForeColor = Color.White;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.Cursor = Cursors.Hand;
+            button1.Click += button1_Click;
+
+            // add controls
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(textBox2);
             panel1.Controls.Add(label2);
+            panel1.Controls.Add(textBox2);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(116, 131);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(180, 142);
-            panel1.TabIndex = 5;
-            // 
-            // LoginUserControl
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+
             Controls.Add(panel1);
-            Name = "LoginUserControl";
+
+            // UserControl
+            BackColor = Color.FromArgb(245, 245, 245);
             Size = new Size(400, 400);
+
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
         }
+
 
         #endregion
 

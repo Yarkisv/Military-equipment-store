@@ -66,7 +66,7 @@ namespace MilitaryEquipmentStore.Forms
             contentPanel.Controls.Clear();
 
             ManageManagersControl manageManagersControl = new ManageManagersControl();
-            manageManagersControl.Dock = DockStyle.Fill;
+            //manageManagersControl.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(manageManagersControl);
         }
 

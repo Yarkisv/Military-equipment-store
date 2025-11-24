@@ -39,3 +39,4 @@ D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\Mil
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ProductCardUserControl.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ManageManagersControl.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ManageProductsControl.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Modal_windows.EditProductForm.resources
