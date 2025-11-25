@@ -44,14 +44,11 @@ namespace MilitaryEquipmentStore.Controls
                     p.name_,
                     p.price,
                     p.description_,
-                    p.path_to,
                     e.device_type,
                     e.range_km,
                     e.frequency_band,
                     e.power_kw,
                     e.weight,
-                    e.dimensions,
-                    e.operating_temp,
                     e.protection_level,
                     e.power_supply
                 from products p
@@ -65,14 +62,12 @@ namespace MilitaryEquipmentStore.Controls
                     p.name_,
                     p.price,
                     p.description_,
-                    p.path_to,
                     t.transport_type,
                     t.load_capacity,
                     t.max_speed,
                     t.fuel_type,
                     t.engine_power,
                     t.crew,
-                    t.range_km,
                     t.transmission_type,
                     t.weight
                 from products p
@@ -86,7 +81,6 @@ namespace MilitaryEquipmentStore.Controls
                     p.name_,
                     p.price,
                     p.description_,
-                    p.path_to,
                     a.caliber,
                     a.ammo_type,
                     a.weight,
@@ -115,8 +109,6 @@ namespace MilitaryEquipmentStore.Controls
                             FrequencyBand = reader["frequency_band"].ToString(),
                             PowerKw = reader.GetDecimal("power_kw"),
                             Weight = reader.GetDecimal("weight"),
-                            Dimensions = reader["dimensions"].ToString(),
-                            OperatingTemp = reader["operating_temp"].ToString(),
                             ProtectionLevel = reader["protection_level"].ToString(),
                             PowerSupply = reader["power_supply"].ToString()
                         };
@@ -134,7 +126,6 @@ namespace MilitaryEquipmentStore.Controls
                             FuelType = reader["fuel_type"].ToString(),
                             EnginePower = reader.GetInt32("engine_power"),
                             Crew = reader.GetInt32("crew"),
-                            RangeKm = reader.GetInt32("range_km"),
                             TransmissionType = reader["transmission_type"].ToString(),
                             Weight = reader.GetDecimal("weight")
                         };

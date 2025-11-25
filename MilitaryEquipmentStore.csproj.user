@@ -31,5 +31,8 @@
     <Compile Update="Modal windows\EditProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Modal windows\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

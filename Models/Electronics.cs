@@ -14,9 +14,14 @@ namespace MilitaryEquipmentStore.Models
         public string FrequencyBand { get; set; }
         public decimal PowerKw { get; set; }
         public decimal Weight { get; set; }
-        public string Dimensions { get; set; }
-        public string OperatingTemp { get; set; }
         public string ProtectionLevel { get; set; }
         public string PowerSupply { get; set; }
+
+        public void Update(string article)
+        {
+            string query = $"update electronics set device_type = '{DeviceType}', range_km = '{RangeKm.ToString(System.Globalization.CultureInfo.InvariantCulture)}', frequency_band = '{FrequencyBand}', power_kw = '{PowerKw.ToString(System.Globalization.CultureInfo.InvariantCulture)}', weight = '{Weight.ToString(System.Globalization.CultureInfo.InvariantCulture)}', protection_level = '{ProtectionLevel}', power_supply = '{PowerSupply}' where article = '{Article}'";
+
+            DbConfig.ExecuteQuery(query);
+        }   
     }
 }

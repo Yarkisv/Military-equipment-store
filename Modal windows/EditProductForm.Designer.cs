@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             mainPanel = new Panel();
+            confirmButton = new Button();
+            otherPanel = new Panel();
             label5 = new Label();
             textBox4 = new TextBox();
             textBox3 = new TextBox();
@@ -43,7 +45,6 @@
             textBox9 = new TextBox();
             textBox8 = new TextBox();
             textBox7 = new TextBox();
-            textBox6 = new TextBox();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
@@ -53,6 +54,8 @@
             label6 = new Label();
             comboBox1 = new ComboBox();
             transportFormPanel = new Panel();
+            label12 = new Label();
+            comboBox2 = new ComboBox();
             textBox16 = new TextBox();
             textBox15 = new TextBox();
             textBox14 = new TextBox();
@@ -60,7 +63,6 @@
             textBox12 = new TextBox();
             textBox11 = new TextBox();
             textBox10 = new TextBox();
-            comboBox2 = new ComboBox();
             label19 = new Label();
             label18 = new Label();
             label17 = new Label();
@@ -68,14 +70,34 @@
             label15 = new Label();
             label14 = new Label();
             label13 = new Label();
-            label12 = new Label();
+            ammoPanel = new Panel();
+            textBox23 = new TextBox();
+            textBox22 = new TextBox();
+            textBox21 = new TextBox();
+            comboBox4 = new ComboBox();
+            textBox20 = new TextBox();
+            textBox19 = new TextBox();
+            comboBox3 = new ComboBox();
+            textBox18 = new TextBox();
+            label27 = new Label();
+            label26 = new Label();
+            label25 = new Label();
+            label24 = new Label();
+            label23 = new Label();
+            label22 = new Label();
+            label21 = new Label();
+            label20 = new Label();
+            comboBox5 = new ComboBox();
             mainPanel.SuspendLayout();
             electronicPanel.SuspendLayout();
             transportFormPanel.SuspendLayout();
+            ammoPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
+            mainPanel.Controls.Add(confirmButton);
+            mainPanel.Controls.Add(otherPanel);
             mainPanel.Controls.Add(label5);
             mainPanel.Controls.Add(textBox4);
             mainPanel.Controls.Add(textBox3);
@@ -87,8 +109,25 @@
             mainPanel.Controls.Add(label1);
             mainPanel.Location = new Point(12, 12);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(295, 598);
+            mainPanel.Size = new Size(295, 639);
             mainPanel.TabIndex = 0;
+            // 
+            // confirmButton
+            // 
+            confirmButton.Location = new Point(8, 604);
+            confirmButton.Name = "confirmButton";
+            confirmButton.Size = new Size(284, 23);
+            confirmButton.TabIndex = 10;
+            confirmButton.Text = "Confirm";
+            confirmButton.UseVisualStyleBackColor = true;
+            confirmButton.Click += confirmButton_Click;
+            // 
+            // otherPanel
+            // 
+            otherPanel.Location = new Point(0, 217);
+            otherPanel.Name = "otherPanel";
+            otherPanel.Size = new Size(295, 381);
+            otherPanel.TabIndex = 9;
             // 
             // label5
             // 
@@ -165,11 +204,11 @@
             // 
             // electronicPanel
             // 
+            electronicPanel.Controls.Add(comboBox5);
             electronicPanel.Controls.Add(textBox17);
             electronicPanel.Controls.Add(textBox9);
             electronicPanel.Controls.Add(textBox8);
             electronicPanel.Controls.Add(textBox7);
-            electronicPanel.Controls.Add(textBox6);
             electronicPanel.Controls.Add(label11);
             electronicPanel.Controls.Add(label10);
             electronicPanel.Controls.Add(label9);
@@ -178,7 +217,7 @@
             electronicPanel.Controls.Add(textBox5);
             electronicPanel.Controls.Add(label6);
             electronicPanel.Controls.Add(comboBox1);
-            electronicPanel.Location = new Point(318, 395);
+            electronicPanel.Location = new Point(313, 393);
             electronicPanel.Name = "electronicPanel";
             electronicPanel.Size = new Size(295, 318);
             electronicPanel.TabIndex = 1;
@@ -210,13 +249,6 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(267, 23);
             textBox7.TabIndex = 9;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(21, 103);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(267, 23);
-            textBox6.TabIndex = 8;
             // 
             // label11
             // 
@@ -265,9 +297,9 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(21, 59);
+            textBox5.Location = new Point(19, 59);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(267, 23);
+            textBox5.Size = new Size(269, 23);
             textBox5.TabIndex = 2;
             // 
             // label6
@@ -285,12 +317,14 @@
             comboBox1.Items.AddRange(new object[] { "радар", "рація", "тепловізор" });
             comboBox1.Location = new Point(19, 18);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(267, 23);
+            comboBox1.Size = new Size(270, 23);
             comboBox1.TabIndex = 0;
             comboBox1.Text = "Device type";
             // 
             // transportFormPanel
             // 
+            transportFormPanel.Controls.Add(label12);
+            transportFormPanel.Controls.Add(comboBox2);
             transportFormPanel.Controls.Add(textBox16);
             transportFormPanel.Controls.Add(textBox15);
             transportFormPanel.Controls.Add(textBox14);
@@ -298,7 +332,6 @@
             transportFormPanel.Controls.Add(textBox12);
             transportFormPanel.Controls.Add(textBox11);
             transportFormPanel.Controls.Add(textBox10);
-            transportFormPanel.Controls.Add(comboBox2);
             transportFormPanel.Controls.Add(label19);
             transportFormPanel.Controls.Add(label18);
             transportFormPanel.Controls.Add(label17);
@@ -306,74 +339,82 @@
             transportFormPanel.Controls.Add(label15);
             transportFormPanel.Controls.Add(label14);
             transportFormPanel.Controls.Add(label13);
-            transportFormPanel.Controls.Add(label12);
-            transportFormPanel.Location = new Point(322, 25);
+            transportFormPanel.Location = new Point(313, 12);
             transportFormPanel.Name = "transportFormPanel";
-            transportFormPanel.Size = new Size(291, 364);
+            transportFormPanel.Size = new Size(295, 375);
             transportFormPanel.TabIndex = 2;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(9, 19);
+            label12.Name = "label12";
+            label12.Size = new Size(82, 15);
+            label12.TabIndex = 17;
+            label12.Text = "Transport type";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Вантажівка", "Броньовик", "Джип", "Тягач", "Інший" });
+            comboBox2.Location = new Point(9, 40);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(267, 23);
+            comboBox2.TabIndex = 16;
             // 
             // textBox16
             // 
-            textBox16.Location = new Point(10, 325);
+            textBox16.Location = new Point(9, 349);
             textBox16.Name = "textBox16";
             textBox16.Size = new Size(267, 23);
             textBox16.TabIndex = 15;
             // 
             // textBox15
             // 
-            textBox15.Location = new Point(10, 281);
+            textBox15.Location = new Point(9, 302);
             textBox15.Name = "textBox15";
             textBox15.Size = new Size(267, 23);
             textBox15.TabIndex = 14;
             // 
             // textBox14
             // 
-            textBox14.Location = new Point(10, 237);
+            textBox14.Location = new Point(9, 258);
             textBox14.Name = "textBox14";
             textBox14.Size = new Size(267, 23);
             textBox14.TabIndex = 13;
             // 
             // textBox13
             // 
-            textBox13.Location = new Point(10, 199);
+            textBox13.Location = new Point(9, 214);
             textBox13.Name = "textBox13";
             textBox13.Size = new Size(267, 23);
             textBox13.TabIndex = 12;
             // 
             // textBox12
             // 
-            textBox12.Location = new Point(10, 156);
+            textBox12.Location = new Point(9, 172);
             textBox12.Name = "textBox12";
             textBox12.Size = new Size(267, 23);
             textBox12.TabIndex = 11;
             // 
             // textBox11
             // 
-            textBox11.Location = new Point(10, 112);
+            textBox11.Location = new Point(9, 126);
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(267, 23);
             textBox11.TabIndex = 10;
             // 
             // textBox10
             // 
-            textBox10.Location = new Point(10, 68);
+            textBox10.Location = new Point(9, 80);
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(267, 23);
             textBox10.TabIndex = 9;
             // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "грузовик", "броневик", "джип", "тягач" });
-            comboBox2.Location = new Point(10, 27);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(267, 23);
-            comboBox2.TabIndex = 8;
-            // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(13, 307);
+            label19.Location = new Point(9, 328);
             label19.Name = "label19";
             label19.Size = new Size(45, 15);
             label19.TabIndex = 7;
@@ -382,7 +423,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(10, 263);
+            label18.Location = new Point(9, 284);
             label18.Name = "label18";
             label18.Size = new Size(101, 15);
             label18.TabIndex = 6;
@@ -391,7 +432,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(10, 219);
+            label17.Location = new Point(9, 240);
             label17.Name = "label17";
             label17.Size = new Size(34, 15);
             label17.TabIndex = 5;
@@ -400,7 +441,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(13, 181);
+            label16.Location = new Point(9, 196);
             label16.Name = "label16";
             label16.Size = new Size(79, 15);
             label16.TabIndex = 4;
@@ -409,7 +450,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(17, 138);
+            label15.Location = new Point(9, 152);
             label15.Name = "label15";
             label15.Size = new Size(55, 15);
             label15.TabIndex = 3;
@@ -418,7 +459,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(15, 94);
+            label14.Location = new Point(9, 105);
             label14.Name = "label14";
             label14.Size = new Size(64, 15);
             label14.TabIndex = 2;
@@ -427,26 +468,182 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(10, 50);
+            label13.Location = new Point(9, 63);
             label13.Name = "label13";
             label13.Size = new Size(80, 15);
             label13.TabIndex = 1;
             label13.Text = "Load capacity";
             // 
-            // label12
+            // ammoPanel
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(10, 9);
-            label12.Name = "label12";
-            label12.Size = new Size(82, 15);
-            label12.TabIndex = 0;
-            label12.Text = "Transport type";
+            ammoPanel.Controls.Add(textBox23);
+            ammoPanel.Controls.Add(textBox22);
+            ammoPanel.Controls.Add(textBox21);
+            ammoPanel.Controls.Add(comboBox4);
+            ammoPanel.Controls.Add(textBox20);
+            ammoPanel.Controls.Add(textBox19);
+            ammoPanel.Controls.Add(comboBox3);
+            ammoPanel.Controls.Add(textBox18);
+            ammoPanel.Controls.Add(label27);
+            ammoPanel.Controls.Add(label26);
+            ammoPanel.Controls.Add(label25);
+            ammoPanel.Controls.Add(label24);
+            ammoPanel.Controls.Add(label23);
+            ammoPanel.Controls.Add(label22);
+            ammoPanel.Controls.Add(label21);
+            ammoPanel.Controls.Add(label20);
+            ammoPanel.Location = new Point(614, 11);
+            ammoPanel.Name = "ammoPanel";
+            ammoPanel.Size = new Size(294, 376);
+            ammoPanel.TabIndex = 3;
+            // 
+            // textBox23
+            // 
+            textBox23.Location = new Point(14, 321);
+            textBox23.Name = "textBox23";
+            textBox23.Size = new Size(267, 23);
+            textBox23.TabIndex = 15;
+            // 
+            // textBox22
+            // 
+            textBox22.Location = new Point(14, 277);
+            textBox22.Name = "textBox22";
+            textBox22.Size = new Size(267, 23);
+            textBox22.TabIndex = 14;
+            // 
+            // textBox21
+            // 
+            textBox21.Location = new Point(14, 233);
+            textBox21.Name = "textBox21";
+            textBox21.Size = new Size(267, 23);
+            textBox21.TabIndex = 13;
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Items.AddRange(new object[] { "Без вибухівки", "ТНТ", "RDX", "Гексоген", "Інший" });
+            comboBox4.Location = new Point(14, 189);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(267, 23);
+            comboBox4.TabIndex = 12;
+            // 
+            // textBox20
+            // 
+            textBox20.Location = new Point(14, 142);
+            textBox20.Name = "textBox20";
+            textBox20.Size = new Size(267, 23);
+            textBox20.TabIndex = 11;
+            // 
+            // textBox19
+            // 
+            textBox19.Location = new Point(14, 101);
+            textBox19.Name = "textBox19";
+            textBox19.Size = new Size(267, 23);
+            textBox19.TabIndex = 10;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "БЗ", "ОФ", "Трасуючий", "Кумулятивний", "Інший" });
+            comboBox3.Location = new Point(14, 64);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(267, 23);
+            comboBox3.TabIndex = 9;
+            // 
+            // textBox18
+            // 
+            textBox18.Location = new Point(14, 20);
+            textBox18.Name = "textBox18";
+            textBox18.Size = new Size(267, 23);
+            textBox18.TabIndex = 8;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Location = new Point(14, 303);
+            label27.Name = "label27";
+            label27.Size = new Size(52, 15);
+            label27.TabIndex = 7;
+            label27.Text = "Shelf life";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Location = new Point(14, 259);
+            label26.Name = "label26";
+            label26.Size = new Size(78, 15);
+            label26.TabIndex = 6;
+            label26.Text = "Storage temp";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(14, 215);
+            label25.Name = "label25";
+            label25.Size = new Size(85, 15);
+            label25.TabIndex = 5;
+            label25.Text = "Effective range";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(14, 171);
+            label24.Name = "label24";
+            label24.Size = new Size(82, 15);
+            label24.TabIndex = 4;
+            label24.Text = "Explosive type";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(15, 127);
+            label23.Name = "label23";
+            label23.Size = new Size(44, 15);
+            label23.TabIndex = 3;
+            label23.Text = "Length";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(17, 89);
+            label22.Name = "label22";
+            label22.Size = new Size(45, 15);
+            label22.TabIndex = 2;
+            label22.Text = "Weight";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(14, 46);
+            label21.Name = "label21";
+            label21.Size = new Size(70, 15);
+            label21.TabIndex = 1;
+            label21.Text = "Ammo type";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(14, 2);
+            label20.Name = "label20";
+            label20.Size = new Size(44, 15);
+            label20.TabIndex = 0;
+            label20.Text = "Caliber";
+            // 
+            // comboBox5
+            // 
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Items.AddRange(new object[] { "VHF", "UHF", "HF", "SHF", "Інший" });
+            comboBox5.Location = new Point(19, 107);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(269, 23);
+            comboBox5.TabIndex = 13;
             // 
             // EditProductForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(744, 713);
+            ClientSize = new Size(1122, 713);
+            Controls.Add(ammoPanel);
             Controls.Add(electronicPanel);
             Controls.Add(transportFormPanel);
             Controls.Add(mainPanel);
@@ -459,6 +656,8 @@
             electronicPanel.PerformLayout();
             transportFormPanel.ResumeLayout(false);
             transportFormPanel.PerformLayout();
+            ammoPanel.ResumeLayout(false);
+            ammoPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -478,7 +677,6 @@
         private TextBox textBox9;
         private TextBox textBox8;
         private TextBox textBox7;
-        private TextBox textBox6;
         private Label label11;
         private Label label10;
         private Label label9;
@@ -494,7 +692,6 @@
         private Label label15;
         private Label label14;
         private Label label13;
-        private Label label12;
         private TextBox textBox16;
         private TextBox textBox15;
         private TextBox textBox14;
@@ -502,8 +699,29 @@
         private TextBox textBox12;
         private TextBox textBox11;
         private TextBox textBox10;
-        private ComboBox comboBox2;
         private Label label19;
         private TextBox textBox17;
+        private Panel ammoPanel;
+        private Label label27;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private Label label23;
+        private Label label22;
+        private Label label21;
+        private Label label20;
+        private ComboBox comboBox3;
+        private TextBox textBox18;
+        private TextBox textBox23;
+        private TextBox textBox22;
+        private TextBox textBox21;
+        private ComboBox comboBox4;
+        private TextBox textBox20;
+        private TextBox textBox19;
+        private Panel otherPanel;
+        private Button confirmButton;
+        private Label label12;
+        private ComboBox comboBox2;
+        private ComboBox comboBox5;
     }
 }

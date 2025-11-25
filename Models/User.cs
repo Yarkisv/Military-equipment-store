@@ -6,11 +6,27 @@ using System.Threading.Tasks;
 
 namespace MilitaryEquipmentStore.Models
 {
-    public static class UserSession
+    public class User
     {
-        public static string FullName { get; set; }
-        public static string Email { get; set; }
-        public static string Phone { get; set; }
-        public static string Role { get; set; }
+        public string Fullname { get; set; }
+        public string Phonenumber { get; set; }
+        public string Email { get; set; }
+
+
+        public void Update() 
+        {
+            string query = $"update users set fullname = '{Fullname}', phonenumber = '{Phonenumber}', email_ = '{Email}' where email_ = '{Email}'";
+
+            DbConfig.ExecuteQuery(query);
+        }
+
+        public static void ResetPassword(string password, int id) 
+        {
+            string hashPassword = BCrypt.Net.BCrypt.HashPassword(password);
+
+            string query = $"update users set hashPassword = '{hashPassword}' where id = {id}";
+
+            DbConfig.ExecuteQuery(query); 
+        }
     }
 }

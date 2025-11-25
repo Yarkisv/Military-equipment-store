@@ -29,61 +29,62 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            button2 = new Button();
             textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(textBox3);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
             panel1.Location = new Point(137, 95);
             panel1.Name = "panel1";
-            panel1.Size = new Size(189, 226);
+            panel1.Size = new Size(189, 216);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // button2
             // 
-            button1.Location = new Point(52, 193);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button2.Location = new Point(11, 154);
+            button2.Name = "button2";
+            button2.Size = new Size(165, 23);
+            button2.TabIndex = 8;
+            button2.Text = "Reset password";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // label1
+            // textBox3
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 11);
-            label1.Name = "label1";
-            label1.Size = new Size(56, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Fullname";
+            textBox3.Location = new Point(12, 120);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(164, 23);
+            textBox3.TabIndex = 7;
             // 
-            // label2
+            // textBox2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 58);
-            label2.Name = "label2";
-            label2.Size = new Size(36, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Email";
+            textBox2.Location = new Point(12, 76);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(164, 23);
+            textBox2.TabIndex = 6;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(12, 32);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(164, 23);
+            textBox1.TabIndex = 5;
             // 
             // label3
             // 
@@ -94,42 +95,33 @@
             label3.TabIndex = 3;
             label3.Text = "Phone";
             // 
-            // label4
+            // label2
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(12, 146);
-            label4.Name = "label4";
-            label4.Size = new Size(57, 15);
-            label4.TabIndex = 4;
-            label4.Text = "Password";
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 58);
+            label2.Name = "label2";
+            label2.Size = new Size(36, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Email";
             // 
-            // textBox1
+            // label1
             // 
-            textBox1.Location = new Point(12, 32);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 5;
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 11);
+            label1.Name = "label1";
+            label1.Size = new Size(56, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Fullname";
             // 
-            // textBox2
+            // button1
             // 
-            textBox2.Location = new Point(12, 76);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(164, 23);
-            textBox2.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(12, 120);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(164, 23);
-            textBox3.TabIndex = 7;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(12, 164);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(164, 23);
-            textBox4.TabIndex = 8;
+            button1.Location = new Point(12, 183);
+            button1.Name = "button1";
+            button1.Size = new Size(164, 23);
+            button1.TabIndex = 0;
+            button1.Text = "Confirm";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // EditManagerForm
             // 
@@ -157,5 +149,6 @@
         private Label label2;
         private Label label1;
         private Button button1;
+        private Button button2;
     }
 }

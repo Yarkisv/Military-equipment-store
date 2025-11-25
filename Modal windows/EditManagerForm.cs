@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MilitaryEquipmentStore.Models;
+using MilitaryEquipmentStore.Modal_windows;
 
 namespace MilitaryEquipmentStore.Modal_windows
 {
@@ -27,7 +29,7 @@ namespace MilitaryEquipmentStore.Modal_windows
             panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
         }
 
-        private void LoadManager() 
+        private void LoadManager()
         {
             string query = $"select fullname, email_, phonenumber from users where id = '{manager_id}'";
 
@@ -44,7 +46,30 @@ namespace MilitaryEquipmentStore.Modal_windows
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                User user = new User
+                {
+                    Fullname = textBox1.Text,
+                    Phonenumber = textBox3.Text,
+                    Email = textBox2.Text
+                };
+
+                user.Update();
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex}");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ResetPassword resetPassword = new ResetPassword(manager_id);
+
+            resetPassword.ShowDialog();
         }
     }
 }

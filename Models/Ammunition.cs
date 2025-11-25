@@ -17,5 +17,12 @@ namespace MilitaryEquipmentStore.Models
         public int EffectiveRange { get; set; }
         public string StorageTemp { get; set; }
         public int ShelfLife { get; set; }
+
+        public void Update(string article)
+        {
+            string query = $"update ammunition set caliber = '{Caliber}', ammo_type = '{AmmoType}', weight = '{Weight.ToString(System.Globalization.CultureInfo.InvariantCulture)}', length = '{Length.ToString(System.Globalization.CultureInfo.InvariantCulture)}', explosive_type = '{ExplosiveType}', effective_range = '{EffectiveRange}', storage_temp = '{StorageTemp}', shelf_life = '{ShelfLife}' where article = '{Article}'";
+
+            DbConfig.ExecuteQuery(query);
+        }
     }
 }
