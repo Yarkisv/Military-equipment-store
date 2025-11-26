@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MilitaryEquipmentStore.Models
 {
-    internal class Product
+    public class Product
     {
         public string Type { get; set; }
         public string Article { get; set; }
@@ -19,6 +19,24 @@ namespace MilitaryEquipmentStore.Models
             string query = $"update products set name_ = '{Name}', price = '{Price.ToString(System.Globalization.CultureInfo.InvariantCulture)}', description_ = '{Description}' where article = '{Article}'";
 
             DbConfig.ExecuteQuery(query);
+        }
+
+        public virtual bool ApplyFilters(Dictionary<string, object> filters)
+        {
+            foreach (var filter in filters)
+            {
+                switch (filter.Key)
+                {
+                    case "MinPrice":
+                        if (filter.Value is decimal minPrice && this.Price < minPrice) return false;
+                        break;
+
+                    case "MaxPrice":
+                        if (filter.Value is decimal maxPrice && this.Price > maxPrice) return false;
+                        break;
+                }
+            }
+            return true;
         }
     }
 }

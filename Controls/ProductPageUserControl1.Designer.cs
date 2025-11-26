@@ -1,6 +1,6 @@
 ﻿namespace MilitaryEquipmentStore.Controls
 {
-    partial class CatalogUserControl
+    partial class ProductPageUserControl1
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,40 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanelProducts = new FlowLayoutPanel();
-            filtersPanel = new Panel();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // flowLayoutPanelProducts
+            // label1
             // 
-            flowLayoutPanelProducts.AutoScroll = true;
-            flowLayoutPanelProducts.Location = new Point(0, 0);
-            flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
-            flowLayoutPanelProducts.Size = new Size(594, 690);
-            flowLayoutPanelProducts.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.Location = new Point(213, 38);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Product page";
             // 
-            // filtersPanel
-            // 
-            filtersPanel.AutoScroll = true;
-            filtersPanel.Location = new Point(600, 0);
-            filtersPanel.Name = "filtersPanel";
-            filtersPanel.Size = new Size(278, 690);
-            filtersPanel.TabIndex = 1;
-            // 
-            // CatalogUserControl
+            // ProductPageUserControl1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(filtersPanel);
-            Controls.Add(flowLayoutPanelProducts);
-            Name = "CatalogUserControl";
-            Size = new Size(878, 690);
+            Controls.Add(label1);
+            Name = "ProductPageUserControl1";
+            Size = new Size(600, 475);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanelProducts;
-        private Panel filtersPanel;
+        private Label label1;
     }
 }

@@ -16,7 +16,19 @@
     <Compile Update="Controls\ManageProductsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\Panels\AmmunitionFiltersPanelControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Panels\ElectronicsFiltersPanelControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Panels\TransportFiltersPanelControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\ProductCardUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\ProductPageUserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Forms\Form1.cs">

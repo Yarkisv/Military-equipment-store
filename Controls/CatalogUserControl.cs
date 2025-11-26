@@ -8,15 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MilitaryEquipmentStore.Models;
+using MilitaryEquipmentStore.Controls.Panels;
 
 namespace MilitaryEquipmentStore.Controls
 {
     public partial class CatalogUserControl : UserControl
     {
         private string category_;
-        private Dictionary<string, Electronics> electronicsList = new Dictionary<string, Electronics>();
+
         private Dictionary<string, Transport> transportList = new Dictionary<string, Transport>();
+        private Dictionary<string, Electronics> electronicsList = new Dictionary<string, Electronics>();
         private Dictionary<string, Ammunition> ammunitionList = new Dictionary<string, Ammunition>();
+
+        private Dictionary<string, Product> filteredProducts = new Dictionary<string, Product>();
 
         public CatalogUserControl(string category)
         {
@@ -29,6 +33,49 @@ namespace MilitaryEquipmentStore.Controls
         private void CatalogUserControl_Load(object sender, EventArgs e)
         {
             LoadProducts();
+
+            ApplyFilters(new Dictionary<string, object>());
+            RenderProducts();
+
+            filtersPanel.Controls.Clear();
+
+            if (category_ == "транспорт")
+            {
+                TransportFiltersPanelControl1 filtersPanel1 = new TransportFiltersPanelControl1();
+                filtersPanel1.Dock = DockStyle.Fill;
+                filtersPanel1.FiltersChanged += OnTransportFiltersChanged;
+                filtersPanel.Controls.Add(filtersPanel1);
+            }
+            else if (category_ == "радіоелектроніка")
+            {
+                ElectronicsFiltersPanelControl1 filtersPanel2 = new ElectronicsFiltersPanelControl1();
+                filtersPanel2.FiltersChanged += OnElectronicsFiltersChanged;
+                filtersPanel.Controls.Add(filtersPanel2);
+            }
+            else if (category_ == "боєприпаси")
+            {
+                AmmunitionFiltersPanelControl1 filtersPanel3 = new AmmunitionFiltersPanelControl1();
+                filtersPanel3.Dock = DockStyle.Fill;
+                filtersPanel3.FiltersChanged += OnAmmunitionFiltersChanged;
+                filtersPanel.Controls.Add(filtersPanel3);
+            }
+        }
+
+        private void OnTransportFiltersChanged(object sender, FilterEventArgs e)
+        {
+            ApplyFilters(e.Filters);
+            RenderProducts();
+        }
+
+        private void OnElectronicsFiltersChanged(object sender, FilterEventArgs e)
+        {
+            ApplyFilters(e.Filters);
+            RenderProducts();
+        }
+
+        private void OnAmmunitionFiltersChanged(object sender, FilterEventArgs e)
+        {
+            ApplyFilters(e.Filters);
             RenderProducts();
         }
 
@@ -55,7 +102,7 @@ namespace MilitaryEquipmentStore.Controls
                 join electronics e on p.article = e.article
                 where p.type = 'радіоелектроніка';";
             else if (category_ == "транспорт") query = @"
-                select 
+                select
                     p.product_id,
                     p.type,
                     p.article,
@@ -103,7 +150,11 @@ namespace MilitaryEquipmentStore.Controls
                     {
                         var item = new Electronics
                         {
+                            Type = reader["type"].ToString(),
                             Article = reader["article"].ToString(),
+                            Name = reader["name_"].ToString(),
+                            Price = reader.GetDecimal("price"),
+                            Description = reader["description_"].ToString(),
                             DeviceType = reader["device_type"].ToString(),
                             RangeKm = reader.GetDecimal("range_km"),
                             FrequencyBand = reader["frequency_band"].ToString(),
@@ -119,7 +170,11 @@ namespace MilitaryEquipmentStore.Controls
                     {
                         var item = new Transport
                         {
+                            Type = reader["type"].ToString(),
                             Article = reader["article"].ToString(),
+                            Name = reader["name_"].ToString(),
+                            Price = reader.GetDecimal("price"),
+                            Description = reader["description_"].ToString(),
                             TransportType = reader["transport_type"].ToString(),
                             LoadCapacity = reader.GetDecimal("load_capacity"),
                             MaxSpeed = reader.GetInt32("max_speed"),
@@ -136,7 +191,11 @@ namespace MilitaryEquipmentStore.Controls
                     {
                         var item = new Ammunition
                         {
+                            Type = reader["type"].ToString(),
                             Article = reader["article"].ToString(),
+                            Name = reader["name_"].ToString(),
+                            Price = reader.GetDecimal("price"),
+                            Description = reader["description_"].ToString(),
                             Caliber = reader["caliber"].ToString(),
                             AmmoType = reader["ammo_type"].ToString(),
                             Weight = reader.GetDecimal("weight"),
@@ -153,30 +212,45 @@ namespace MilitaryEquipmentStore.Controls
             }
         }
 
+        private void ApplyFilters(Dictionary<string, object> filters)
+        {
+            if (category_ == "транспорт")
+            {
+                filteredProducts = transportList
+                    .Where(kvp => kvp.Value.ApplyFilters(filters))
+                    .ToDictionary(kvp => kvp.Key, kvp => (Product)kvp.Value);
+            }
+            else if (category_ == "радіоелектроніка")
+            {
+                filteredProducts = electronicsList
+                    .Where(kvp => kvp.Value.ApplyFilters(filters))
+                    .ToDictionary(kvp => kvp.Key, kvp => (Product)kvp.Value);
+            }
+            else if (category_ == "боєприпаси")
+            {
+                filteredProducts = ammunitionList
+                    .Where(kvp => kvp.Value.ApplyFilters(filters))
+                    .ToDictionary(kvp => kvp.Key, kvp => (Product)kvp.Value);
+            }
+        }
+
         private void RenderProducts()
         {
             flowLayoutPanelProducts.Controls.Clear();
 
-            if (category_ == "радіоелектроніка")
+            foreach (var item in filteredProducts.Values)
             {
-                foreach (var item in electronicsList.Values) 
+                if (category_ == "транспорт" && item is Transport transport)
                 {
-                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(item));
-                }       
-            }
-            else if (category_ == "транспорт")
-            {
-                foreach (var item in transportList.Values)
-                {
-                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(item));
+                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(transport));
                 }
-                    
-            }
-            else if (category_ == "боєприпаси")
-            {
-                foreach (var item in ammunitionList.Values)
+                else if (category_ == "радіоелектроніка" && item is Electronics electronics)
                 {
-                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(item));
+                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(electronics));
+                }
+                else if (category_ == "боєприпаси" && item is Ammunition ammunition)
+                {
+                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(ammunition));
                 }
             }
         }

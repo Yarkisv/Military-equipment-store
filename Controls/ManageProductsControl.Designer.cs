@@ -32,7 +32,7 @@
             dataGridProducts = new DataGridView();
             Type = new DataGridViewTextBoxColumn();
             Article = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
+            ProductName = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             Description = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewButtonColumn();
@@ -45,7 +45,7 @@
             addProductBtn.Dock = DockStyle.Top;
             addProductBtn.Location = new Point(0, 0);
             addProductBtn.Name = "addProductBtn";
-            addProductBtn.Size = new Size(800, 30);
+            addProductBtn.Size = new Size(735, 30);
             addProductBtn.TabIndex = 1;
             addProductBtn.Text = "Add Product";
             addProductBtn.Click += addProductBtn_Click;
@@ -53,10 +53,10 @@
             // dataGridProducts
             // 
             dataGridProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridProducts.Columns.AddRange(new DataGridViewColumn[] { Type, Article, Name, Price, Description, Edit, Delete });
+            dataGridProducts.Columns.AddRange(new DataGridViewColumn[] { Type, Article, ProductName, Price, Description, Edit, Delete });
             dataGridProducts.Location = new Point(3, 36);
             dataGridProducts.Name = "dataGridProducts";
-            dataGridProducts.Size = new Size(747, 372);
+            dataGridProducts.Size = new Size(747, 358);
             dataGridProducts.TabIndex = 2;
             dataGridProducts.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -72,8 +72,8 @@
             // 
             // Name
             // 
-            Name.HeaderText = "Name";
-            Name.Name = "Name";
+            ProductName.HeaderText = "Name";
+            ProductName.Name = "Name";
             // 
             // Price
             // 
@@ -99,7 +99,8 @@
             // 
             Controls.Add(dataGridProducts);
             Controls.Add(addProductBtn);
-            Size = new Size(800, 450);
+            Name = "ManageProductsControl";
+            Size = new Size(735, 614);
             ((System.ComponentModel.ISupportInitialize)dataGridProducts).EndInit();
             ResumeLayout(false);
         }
@@ -109,7 +110,7 @@
         private DataGridView dataGridProducts;
         private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Article;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewButtonColumn Edit;
