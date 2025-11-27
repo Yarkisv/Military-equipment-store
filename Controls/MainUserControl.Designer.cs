@@ -33,11 +33,12 @@
             button3 = new Button();
             manageManagersBtn = new Button();
             manageProductsBtn = new Button();
+            button4 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(10, 72);
+            button1.Location = new Point(10, 103);
             button1.Name = "button1";
             button1.Size = new Size(150, 100);
             button1.TabIndex = 1;
@@ -47,7 +48,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(10, 178);
+            button2.Location = new Point(10, 209);
             button2.Name = "button2";
             button2.Size = new Size(150, 100);
             button2.TabIndex = 2;
@@ -57,7 +58,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(10, 284);
+            button3.Location = new Point(10, 315);
             button3.Name = "button3";
             button3.Size = new Size(150, 100);
             button3.TabIndex = 3;
@@ -85,17 +86,28 @@
             manageProductsBtn.UseVisualStyleBackColor = true;
             manageProductsBtn.Click += manageProductsBtn_Click_1;
             // 
+            // button4
+            // 
+            button4.Location = new Point(10, 72);
+            button4.Name = "button4";
+            button4.Size = new Size(150, 25);
+            button4.TabIndex = 6;
+            button4.Text = "Manage orders";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // MainUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button4);
             Controls.Add(manageProductsBtn);
             Controls.Add(manageManagersBtn);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "MainUserControl";
-            Size = new Size(170, 396);
+            Size = new Size(170, 423);
             ResumeLayout(false);
         }
 
@@ -106,5 +118,6 @@
         private Button button3;
         private Button manageManagersBtn;
         private Button manageProductsBtn;
+        private Button button4;
     }
 }

@@ -45,3 +45,5 @@ D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\ref
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Panels.TransportFiltersPanelControl1.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Panels.AmmunitionFiltersPanelControl1.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Panels.ElectronicsFiltersPanelControl1.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.ManageOrdersControl1.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Modal_windows.OrderDetailsForm.resources

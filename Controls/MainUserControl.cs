@@ -71,5 +71,14 @@ namespace MilitaryEquipmentStore.Controls
                 form.ShowProductsManagerView();
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var form = this.FindForm() as Form1;
+            if (form != null) 
+            {
+                form.ShowOrdersManagerView();
+            }
+        }
     }
 }

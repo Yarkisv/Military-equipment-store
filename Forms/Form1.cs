@@ -78,5 +78,14 @@ namespace MilitaryEquipmentStore.Forms
             manageProductsControl.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(manageProductsControl);
         }
+
+        public void ShowOrdersManagerView()
+        {
+            contentPanel.Controls.Clear();
+
+            ManageOrdersControl1 ordersControl1 = new ManageOrdersControl1();
+            ordersControl1.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(ordersControl1);
+        }
     }
 }
