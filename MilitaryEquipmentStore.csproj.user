@@ -19,6 +19,9 @@
     <Compile Update="Controls\ManageProductsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\OrderItemUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\Panels\AmmunitionFiltersPanelControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -34,10 +37,16 @@
     <Compile Update="Controls\ProductPageUserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\CheckoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Controls\Auth\AddManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Modal windows\EditManagerForm.cs">

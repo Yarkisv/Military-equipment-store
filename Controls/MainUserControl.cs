@@ -75,10 +75,16 @@ namespace MilitaryEquipmentStore.Controls
         private void button4_Click(object sender, EventArgs e)
         {
             var form = this.FindForm() as Form1;
-            if (form != null) 
+            if (form != null)
             {
                 form.ShowOrdersManagerView();
             }
+        }
+
+        private void btnCart_Click(object sender, EventArgs e)
+        {
+            CheckoutForm checkoutForm = new CheckoutForm();
+            checkoutForm.Show();
         }
     }
 }

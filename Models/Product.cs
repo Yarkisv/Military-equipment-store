@@ -38,5 +38,27 @@ namespace MilitaryEquipmentStore.Models
             }
             return true;
         }
+
+        public static int GetProductId(string article) 
+        {
+            try
+            {
+                string query = $"select product_id from products where article = '{article}';";
+
+                using (var reader = DbConfig.ReadData(query))
+                {
+                    if (reader != null && reader.Read()) 
+                    {
+                        return reader.GetInt32("product_id"); 
+                    }
+                }
+            }
+            catch (Exception exception) 
+            {
+                throw new Exception("SQL exception");
+            }
+
+            return 0;
+        }
     }
 }

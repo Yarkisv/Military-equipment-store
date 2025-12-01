@@ -234,6 +234,39 @@ namespace MilitaryEquipmentStore.Controls
             }
         }
 
+        //private void RenderProducts()
+        //{
+        //    flowLayoutPanelProducts.Controls.Clear();
+
+        //    foreach (var item in filteredProducts.Values)
+        //    {
+        //        if (category_ == "транспорт" && item is Transport transport)
+        //        {
+        //            var card = new ProductCardUserControl(transport)
+        //            {
+        //                Tag = new ProductInfo { Article = transport.Article, Type = transport.Type }
+        //            };
+        //            flowLayoutPanelProducts.Controls.Add(card);
+        //        }
+        //        else if (category_ == "радіоелектроніка" && item is Electronics electronics)
+        //        {
+        //            var card = new ProductCardUserControl(electronics)
+        //            {
+        //                Tag = new ProductInfo { Article = electronics.Article, Type = electronics.Type }
+        //            };
+        //            flowLayoutPanelProducts.Controls.Add(card);
+        //        }
+        //        else if (category_ == "боєприпаси" && item is Ammunition ammunition)
+        //        {
+        //            var card = new ProductCardUserControl(ammunition)
+        //            {
+        //                Tag = new ProductInfo { Article = ammunition.Article, Type = ammunition.Type }
+        //            };
+        //            flowLayoutPanelProducts.Controls.Add(card);
+        //        }
+        //    }
+        //}
+
         private void RenderProducts()
         {
             flowLayoutPanelProducts.Controls.Clear();
@@ -242,17 +275,26 @@ namespace MilitaryEquipmentStore.Controls
             {
                 if (category_ == "транспорт" && item is Transport transport)
                 {
-                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(transport));
+                    var card = new ProductCardUserControl(transport);
+                    flowLayoutPanelProducts.Controls.Add(card);
                 }
                 else if (category_ == "радіоелектроніка" && item is Electronics electronics)
                 {
-                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(electronics));
+                    var card = new ProductCardUserControl(electronics);
+                    flowLayoutPanelProducts.Controls.Add(card);
                 }
                 else if (category_ == "боєприпаси" && item is Ammunition ammunition)
                 {
-                    flowLayoutPanelProducts.Controls.Add(new ProductCardUserControl(ammunition));
+                    var card = new ProductCardUserControl(ammunition);
+                    flowLayoutPanelProducts.Controls.Add(card);
                 }
             }
         }
     }
+}
+
+public class ProductInfo
+{
+    public string Article { get; set; }
+    public string Type { get; set; }
 }
