@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,18 @@ namespace MilitaryEquipmentStore.Models
         public static bool IsEmpty()
         {
             return orderItems.Count == 0;
+        }
+
+        public static void InsertOrderIntoDb(int clientId, int quantity, decimal totalPrice, string status = "оформлено", DateTime? orderDate = null)
+        {
+            orderDate = DateTime.Now;
+
+            string formattedDate = orderDate.Value.ToString("yyyy-MM-dd");
+            string formattedPrice = totalPrice.ToString("0.00", CultureInfo.InvariantCulture);
+
+            string query = $"insert into orders (order_date, client_id, quantity, total_price, status_) values ('{formattedDate}', '{clientId}', '{quantity}', '{formattedPrice}', 'оформлено')";
+
+            DbConfig.ExecuteQuery(query);
         }
     }
 }

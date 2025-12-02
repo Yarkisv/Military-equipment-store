@@ -12,7 +12,6 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelClientInfo;
         private System.Windows.Forms.Label lblSelectClient;
-        private System.Windows.Forms.ComboBox cmbClients;
         private System.Windows.Forms.Button btnSelectClient;
         private System.Windows.Forms.Label lblClientInfo;
         private System.Windows.Forms.Panel panelOrderItems;
@@ -23,7 +22,6 @@
         private System.Windows.Forms.Label lblTotalPrice;
         private System.Windows.Forms.Button btnConfirmOrder;
         private System.Windows.Forms.Panel panelSeparator;
-        private System.Windows.Forms.Button btnRefreshClients;
 
 
         /// <summary>
@@ -60,10 +58,8 @@
             flowOrderItems = new FlowLayoutPanel();
             lblOrderItems = new Label();
             panelClientInfo = new Panel();
-            btnRefreshClients = new Button();
             lblClientInfo = new Label();
             btnSelectClient = new Button();
-            cmbClients = new ComboBox();
             lblSelectClient = new Label();
             panelHeader.SuspendLayout();
             panelMain.SuspendLayout();
@@ -110,6 +106,7 @@
             btnClose.TabIndex = 1;
             btnClose.Text = "✕";
             btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // panelMain
             // 
@@ -143,6 +140,7 @@
             btnConfirmOrder.TabIndex = 4;
             btnConfirmOrder.Text = "ПІДТВЕРДИТИ ЗАМОВЛЕННЯ";
             btnConfirmOrder.UseVisualStyleBackColor = false;
+            btnConfirmOrder.Click += btnConfirmOrder_Click;
             // 
             // panelSeparator
             // 
@@ -222,37 +220,20 @@
             // panelClientInfo
             // 
             panelClientInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panelClientInfo.Controls.Add(btnRefreshClients);
             panelClientInfo.Controls.Add(lblClientInfo);
             panelClientInfo.Controls.Add(btnSelectClient);
-            panelClientInfo.Controls.Add(cmbClients);
             panelClientInfo.Controls.Add(lblSelectClient);
             panelClientInfo.Location = new Point(20, 20);
             panelClientInfo.Name = "panelClientInfo";
             panelClientInfo.Size = new Size(760, 150);
             panelClientInfo.TabIndex = 0;
             // 
-            // btnRefreshClients
-            // 
-            btnRefreshClients.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefreshClients.BackColor = Color.White;
-            btnRefreshClients.FlatAppearance.BorderColor = Color.Black;
-            btnRefreshClients.FlatStyle = FlatStyle.Flat;
-            btnRefreshClients.Font = new Font("Segoe UI", 9F);
-            btnRefreshClients.ForeColor = Color.Black;
-            btnRefreshClients.Location = new Point(677, 25);
-            btnRefreshClients.Name = "btnRefreshClients";
-            btnRefreshClients.Size = new Size(80, 30);
-            btnRefreshClients.TabIndex = 4;
-            btnRefreshClients.Text = "Оновити";
-            btnRefreshClients.UseVisualStyleBackColor = false;
-            // 
             // lblClientInfo
             // 
             lblClientInfo.AutoSize = true;
             lblClientInfo.Font = new Font("Segoe UI", 10F);
             lblClientInfo.ForeColor = Color.Black;
-            lblClientInfo.Location = new Point(0, 100);
+            lblClientInfo.Location = new Point(0, 88);
             lblClientInfo.Name = "lblClientInfo";
             lblClientInfo.Size = new Size(125, 19);
             lblClientInfo.TabIndex = 3;
@@ -267,23 +248,13 @@
             btnSelectClient.FlatStyle = FlatStyle.Flat;
             btnSelectClient.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSelectClient.ForeColor = Color.White;
-            btnSelectClient.Location = new Point(0, 60);
+            btnSelectClient.Location = new Point(0, 23);
             btnSelectClient.Name = "btnSelectClient";
             btnSelectClient.Size = new Size(200, 30);
             btnSelectClient.TabIndex = 2;
             btnSelectClient.Text = "Обрати клієнта";
             btnSelectClient.UseVisualStyleBackColor = false;
-            // 
-            // cmbClients
-            // 
-            cmbClients.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            cmbClients.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbClients.Font = new Font("Segoe UI", 10F);
-            cmbClients.FormattingEnabled = true;
-            cmbClients.Location = new Point(0, 25);
-            cmbClients.Name = "cmbClients";
-            cmbClients.Size = new Size(670, 25);
-            cmbClients.TabIndex = 1;
+            btnSelectClient.Click += btnSelectClient_Click;
             // 
             // lblSelectClient
             // 
