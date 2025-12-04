@@ -82,6 +82,14 @@ namespace MilitaryEquipmentStore.Forms
             int quantity = Order.GetItemCount();
 
             Order.InsertOrderIntoDb(selectedUserId, quantity, totalPrice);
+
+            Order.Clear();
+
+            MessageBox.Show("Замовлення успішно підтверджено");
+
+            LoadCartItems();
+            lblTotalPrice.Text = "";
+            lblTotalItems.Text = "";
         }
 
         private void btnClose_Click(object sender, EventArgs e)

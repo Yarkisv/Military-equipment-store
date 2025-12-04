@@ -18,18 +18,7 @@ namespace MilitaryEquipmentStore.Controls
             InitializeComponent();
             LoadManagers();
 
-            button1.Dock = DockStyle.Top;
             dataGridManagers.Dock = DockStyle.Fill;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddManagerForm addManagerForm = new AddManagerForm();
-
-            if (addManagerForm.ShowDialog() == DialogResult.OK)
-            {
-                LoadManagers();
-            }
         }
 
         private void LoadManagers()
@@ -82,6 +71,16 @@ namespace MilitaryEquipmentStore.Controls
                     DbConfig.ExecuteQuery(deleteQuery);
                     LoadManagers();
                 }
+            }
+        }
+
+        private void addManagerBtn_Click(object sender, EventArgs e)
+        {
+            AddManagerForm addManagerForm = new AddManagerForm();
+
+            if (addManagerForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadManagers();
             }
         }
     }

@@ -49,21 +49,22 @@ namespace MilitaryEquipmentStore.Controls
                 editProductForm.ShowDialog();
             }
 
-            //if (dataGridProducts.Columns[e.ColumnIndex].HeaderText.Equals("Delete"))
-            //{
-            //    var result = MessageBox.Show(
-            //        "Delete product?",
-            //        "Confirmation",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Warning
-            //    );
+            if (dataGridProducts.Columns[e.ColumnIndex].HeaderText.Equals("Delete"))
+            {
+                var result = MessageBox.Show(
+                    "Delete product?",
+                    "Confirmation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
 
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        string deleteQuery = $"delete from users where id =";
-            //        DbConfig.ExecuteQuery(deleteQuery);
-            //    }
-            //}
+                if (result == DialogResult.Yes)
+                {
+                    string deleteQuery = $"delete from products where article = '{article}';";
+                    DbConfig.ExecuteQuery(deleteQuery);
+                    LoadProducts();
+                }
+            }
         }
     }
 }

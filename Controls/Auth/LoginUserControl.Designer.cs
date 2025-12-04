@@ -28,86 +28,170 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            panel1 = new Panel();
-
-            panel1.SuspendLayout();
+            loginButton = new Button();
+            labelEmail = new Label();
+            labelPassword = new Label();
+            textBoxEmail = new TextBox();
+            textBoxPassword = new TextBox();
+            panelCard = new Panel();
+            labelSubtitle = new Label();
+            labelTitle = new Label();
+            panelLogo = new Panel();
+            labelLogo = new Label();
+            panelCard.SuspendLayout();
+            panelLogo.SuspendLayout();
             SuspendLayout();
-
-            // panel1 – card style
-            panel1.BackColor = Color.White;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Padding = new Padding(10);
-            panel1.Location = new Point(110, 110);
-            panel1.Size = new Size(200, 170);
-
-            // label1 (Email)
-            label1.AutoSize = true;
-            label1.Location = new Point(10, 10);
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-            label1.Text = "Email";
-
-            // textBox1 (Email)
-            textBox1.Location = new Point(10, 30);
-            textBox1.Size = new Size(175, 25);
-            textBox1.Font = new Font("Segoe UI", 10F);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-
-            // label2 (Password)
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 65);
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-            label2.Text = "Password";
-
-            // textBox2 (Password)
-            textBox2.Location = new Point(10, 85);
-            textBox2.Size = new Size(175, 25);
-            textBox2.Font = new Font("Segoe UI", 10F);
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.UseSystemPasswordChar = true;
-
-            // button1 (Login)
-            button1.Location = new Point(10, 120);
-            button1.Size = new Size(175, 35);
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            button1.Text = "Login";
-            button1.BackColor = Color.FromArgb(0, 120, 215);   // Windows blue
-            button1.ForeColor = Color.White;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Cursor = Cursors.Hand;
-            button1.Click += button1_Click;
-
-            // add controls
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(button1);
-
-            Controls.Add(panel1);
-
-            // UserControl
-            BackColor = Color.FromArgb(245, 245, 245);
-            Size = new Size(400, 400);
-
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            // 
+            // loginButton
+            // 
+            loginButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            loginButton.BackColor = Color.FromArgb(40, 40, 40);
+            loginButton.FlatStyle = FlatStyle.Flat;
+            loginButton.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            loginButton.ForeColor = Color.White;
+            loginButton.Location = new Point(30, 210);
+            loginButton.Name = "loginButton";
+            loginButton.Size = new Size(290, 40);
+            loginButton.TabIndex = 3;
+            loginButton.Text = "Увійти";
+            loginButton.UseVisualStyleBackColor = false;
+            loginButton.Click += loginButton_Click;
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelEmail.ForeColor = Color.White;
+            labelEmail.Location = new Point(30, 70);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new Size(36, 15);
+            labelEmail.TabIndex = 0;
+            labelEmail.Text = "Email";
+            // 
+            // labelPassword
+            // 
+            labelPassword.AutoSize = true;
+            labelPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelPassword.ForeColor = Color.White;
+            labelPassword.Location = new Point(30, 130);
+            labelPassword.Name = "labelPassword";
+            labelPassword.Size = new Size(50, 15);
+            labelPassword.TabIndex = 0;
+            labelPassword.Text = "Пароль";
+            // 
+            // textBoxEmail
+            // 
+            textBoxEmail.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxEmail.BackColor = Color.FromArgb(40, 40, 40);
+            textBoxEmail.BorderStyle = BorderStyle.FixedSingle;
+            textBoxEmail.Font = new Font("Segoe UI", 10F);
+            textBoxEmail.ForeColor = Color.White;
+            textBoxEmail.Location = new Point(30, 90);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(290, 25);
+            textBoxEmail.TabIndex = 1;
+            // 
+            // textBoxPassword
+            // 
+            textBoxPassword.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxPassword.BackColor = Color.FromArgb(40, 40, 40);
+            textBoxPassword.BorderStyle = BorderStyle.FixedSingle;
+            textBoxPassword.Font = new Font("Segoe UI", 10F);
+            textBoxPassword.ForeColor = Color.White;
+            textBoxPassword.Location = new Point(30, 150);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(290, 25);
+            textBoxPassword.TabIndex = 2;
+            textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // panelCard
+            // 
+            panelCard.Anchor = AnchorStyles.None;
+            panelCard.BackColor = Color.FromArgb(25, 25, 25);
+            panelCard.BorderStyle = BorderStyle.FixedSingle;
+            panelCard.Controls.Add(labelSubtitle);
+            panelCard.Controls.Add(labelTitle);
+            panelCard.Controls.Add(labelEmail);
+            panelCard.Controls.Add(textBoxEmail);
+            panelCard.Controls.Add(labelPassword);
+            panelCard.Controls.Add(textBoxPassword);
+            panelCard.Controls.Add(loginButton);
+            panelCard.Location = new Point(150, 150);
+            panelCard.Name = "panelCard";
+            panelCard.Size = new Size(350, 280);
+            panelCard.TabIndex = 0;
+            // 
+            // labelSubtitle
+            // 
+            labelSubtitle.AutoSize = true;
+            labelSubtitle.Font = new Font("Segoe UI", 9F);
+            labelSubtitle.ForeColor = Color.FromArgb(150, 150, 150);
+            labelSubtitle.Location = new Point(30, 260);
+            labelSubtitle.Name = "labelSubtitle";
+            labelSubtitle.Size = new Size(269, 15);
+            labelSubtitle.TabIndex = 5;
+            labelSubtitle.Text = "Military Equipment Store © 2024 - Вхід в систему";
+            // 
+            // labelTitle
+            // 
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            labelTitle.ForeColor = Color.White;
+            labelTitle.Location = new Point(30, 20);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(167, 30);
+            labelTitle.TabIndex = 4;
+            labelTitle.Text = "Авторизація";
+            // 
+            // panelLogo
+            // 
+            panelLogo.Anchor = AnchorStyles.None;
+            panelLogo.BackColor = Color.FromArgb(20, 20, 20);
+            panelLogo.BorderStyle = BorderStyle.FixedSingle;
+            panelLogo.Controls.Add(labelLogo);
+            panelLogo.Location = new Point(150, 40);
+            panelLogo.Name = "panelLogo";
+            panelLogo.Size = new Size(350, 80);
+            panelLogo.TabIndex = 1;
+            // 
+            // labelLogo
+            // 
+            labelLogo.Dock = DockStyle.Fill;
+            labelLogo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            labelLogo.ForeColor = Color.White;
+            labelLogo.Location = new Point(0, 0);
+            labelLogo.Name = "labelLogo";
+            labelLogo.Size = new Size(348, 78);
+            labelLogo.TabIndex = 0;
+            labelLogo.Text = "MILITARY STORE";
+            labelLogo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // LoginUserControl
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(panelLogo);
+            Controls.Add(panelCard);
+            Name = "LoginUserControl";
+            Size = new Size(650, 500);
+            panelCard.ResumeLayout(false);
+            panelCard.PerformLayout();
+            panelLogo.ResumeLayout(false);
             ResumeLayout(false);
         }
 
-
         #endregion
 
-        private Button button1;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Panel panel1;
+        private Button loginButton;
+        private Label labelEmail;
+        private Label labelPassword;
+        private TextBox textBoxEmail;
+        private TextBox textBoxPassword;
+        private Panel panelCard;
+        private Label labelTitle;
+        private Label labelSubtitle;
+        private Panel panelLogo;
+        private Label labelLogo;
     }
 }

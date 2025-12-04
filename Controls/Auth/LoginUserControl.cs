@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MilitaryEquipmentStore.Forms;
 using MilitaryEquipmentStore.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MilitaryEquipmentStore.Controls.Auth
 {
@@ -18,16 +19,16 @@ namespace MilitaryEquipmentStore.Controls.Auth
         {
             InitializeComponent();
 
-            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
-            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+            panelCard.Left = (this.ClientSize.Width - panelCard.Width) / 2;
+            panelCard.Top = (this.ClientSize.Height - panelCard.Height) / 2;
+
+            panelLogo.Left = (this.ClientSize.Width - panelLogo.Width) / 2;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
-            string userEmail = textBox1.Text;
-            string password = textBox2.Text;
-
-            string userRole = "";
+            string userEmail = textBoxEmail.Text;
+            string password = textBoxPassword.Text;
 
             if (string.IsNullOrEmpty(userEmail) || string.IsNullOrEmpty(password))
             {
@@ -43,8 +44,8 @@ namespace MilitaryEquipmentStore.Controls.Auth
                 {
                     MessageBox.Show("User not found");
 
-                    textBox1.Text = "";
-                    textBox2.Text = "";
+                    textBoxEmail.Text = "";
+                    textBoxPassword.Text = "";
 
                     return;
                 }

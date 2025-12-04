@@ -48,6 +48,31 @@ namespace MilitaryEquipmentStore
             }
         }
 
+        public static long ExecuteQueryWithLastId(string query)
+        {
+            long id = 0;
+
+            try
+            {
+                Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                    id = cmd.LastInsertedId;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                Close();
+            }
+
+            return id;
+        }
+
         public static MySqlDataReader ReadData(string query)
         {
             MySqlDataReader reader = null;

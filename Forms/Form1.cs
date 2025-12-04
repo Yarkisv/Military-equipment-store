@@ -49,8 +49,8 @@ namespace MilitaryEquipmentStore.Forms
             sidebarPanel.Visible = true;
             contentPanel.Visible = true;
 
-            sidebarPanel.Controls.Clear();
-            sidebarPanel.Controls.Add(new MainUserControl());
+            panelSidebarContent.Controls.Clear();
+            panelSidebarContent.Controls.Add(new MainUserControl());
         }
 
         public void ShowCatalogView(string category)

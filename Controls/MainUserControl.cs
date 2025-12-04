@@ -20,17 +20,17 @@ namespace MilitaryEquipmentStore.Controls
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnElectronics_Click(object sender, EventArgs e)
         {
             OpenCatalog("радіоелектроніка");
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void btnTransport_Click(object sender, EventArgs e)
         {
             OpenCatalog("транспорт");
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void btnAmmunition_Click(object sender, EventArgs e)
         {
             OpenCatalog("боєприпаси");
         }
@@ -54,7 +54,7 @@ namespace MilitaryEquipmentStore.Controls
             form.ShowCatalogView(category);
         }
 
-        private void manageManagersBtn_Click_1(object sender, EventArgs e)
+        private void manageManagersBtn_Click(object sender, EventArgs e)
         {
             var form = this.FindForm() as Form1;
             if (form != null)
@@ -63,7 +63,7 @@ namespace MilitaryEquipmentStore.Controls
             }
         }
 
-        private void manageProductsBtn_Click_1(object sender, EventArgs e)
+        private void manageProductsBtn_Click(object sender, EventArgs e)
         {
             var form = this.FindForm() as Form1;
             if (form != null)
@@ -72,7 +72,7 @@ namespace MilitaryEquipmentStore.Controls
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void manageOrdersBtn_Click(object sender, EventArgs e)
         {
             var form = this.FindForm() as Form1;
             if (form != null)

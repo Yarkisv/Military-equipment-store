@@ -75,7 +75,21 @@ namespace MilitaryEquipmentStore.Models
 
             string query = $"insert into orders (order_date, client_id, quantity, total_price, status_) values ('{formattedDate}', '{clientId}', '{quantity}', '{formattedPrice}', 'оформлено')";
 
-            DbConfig.ExecuteQuery(query);
+            long orderId = DbConfig.ExecuteQueryWithLastId(query);
+
+            Order.InsertOrderItems(orderId);
+        }
+
+        private static void InsertOrderItems(long orderId)
+        {
+            foreach (var item in orderItems)
+            {
+                string price = item.Price.ToString("0.00", CultureInfo.InvariantCulture);
+
+                string query = $"insert into ordered_items (order_id, product_id, quantity, price) values ('{orderId}', '{item.ProductId}', '{item.Quantity}', '{price}')";
+
+                DbConfig.ExecuteQuery(query);
+            }
         }
     }
 }

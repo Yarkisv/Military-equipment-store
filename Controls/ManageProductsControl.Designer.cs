@@ -37,71 +37,166 @@
             Description = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewButtonColumn();
             Delete = new DataGridViewButtonColumn();
+            panelTop = new Panel();
+            labelTitle = new Label();
+            panelContainer = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridProducts).BeginInit();
+            panelTop.SuspendLayout();
+            panelContainer.SuspendLayout();
             SuspendLayout();
             // 
             // addProductBtn
             // 
-            addProductBtn.Dock = DockStyle.Top;
-            addProductBtn.Location = new Point(0, 0);
+            addProductBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            addProductBtn.BackColor = Color.FromArgb(40, 40, 40);
+            addProductBtn.FlatStyle = FlatStyle.Flat;
+            addProductBtn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            addProductBtn.ForeColor = Color.White;
+            addProductBtn.Location = new Point(799, 12);
             addProductBtn.Name = "addProductBtn";
-            addProductBtn.Size = new Size(735, 30);
+            addProductBtn.Size = new Size(180, 40);
             addProductBtn.TabIndex = 1;
-            addProductBtn.Text = "Add Product";
+            addProductBtn.Text = "➕ Новий товар";
+            addProductBtn.UseVisualStyleBackColor = false;
             addProductBtn.Click += addProductBtn_Click;
             // 
             // dataGridProducts
             // 
-            dataGridProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridProducts.AllowUserToAddRows = false;
+            dataGridProducts.AllowUserToDeleteRows = false;
+            dataGridProducts.AllowUserToResizeRows = false;
+            dataGridProducts.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridProducts.BackgroundColor = Color.FromArgb(30, 30, 30);
+            dataGridProducts.BorderStyle = BorderStyle.None;
+            dataGridProducts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridProducts.ColumnHeadersHeight = 40;
+            dataGridProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridProducts.Columns.AddRange(new DataGridViewColumn[] { Type, Article, ProductName, Price, Description, Edit, Delete });
-            dataGridProducts.Location = new Point(3, 36);
+            dataGridProducts.EnableHeadersVisualStyles = false;
+            dataGridProducts.GridColor = Color.FromArgb(50, 50, 50);
+            dataGridProducts.Location = new Point(15, 15);
+            dataGridProducts.MultiSelect = false;
             dataGridProducts.Name = "dataGridProducts";
-            dataGridProducts.Size = new Size(747, 358);
+            dataGridProducts.ReadOnly = true;
+            dataGridProducts.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridProducts.RowHeadersVisible = false;
+            dataGridProducts.RowHeadersWidth = 40;
+            dataGridProducts.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(40, 40, 40);
+            dataGridProducts.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+            dataGridProducts.RowTemplate.DefaultCellStyle.ForeColor = Color.White;
+            dataGridProducts.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridProducts.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridProducts.RowTemplate.Height = 35;
+            dataGridProducts.ScrollBars = ScrollBars.Vertical;
+            dataGridProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridProducts.Size = new Size(964, 616);
             dataGridProducts.TabIndex = 2;
             dataGridProducts.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Type
             // 
+            Type.DataPropertyName = "Type";
+            Type.FillWeight = 120F;
             Type.HeaderText = "Type";
             Type.Name = "Type";
+            Type.ReadOnly = true;
             // 
             // Article
             // 
+            Article.DataPropertyName = "Article";
             Article.HeaderText = "Article";
             Article.Name = "Article";
+            Article.ReadOnly = true;
             // 
-            // Name
+            // ProductName
             // 
-            ProductName.HeaderText = "Name";
-            ProductName.Name = "Name";
+            ProductName.DataPropertyName = "Name";
+            ProductName.FillWeight = 180F;
+            ProductName.HeaderText = "Product Name";
+            ProductName.Name = "ProductName";
+            ProductName.ReadOnly = true;
             // 
             // Price
             // 
-            Price.HeaderText = "Price";
+            Price.DataPropertyName = "Price";
+            Price.FillWeight = 90F;
+            Price.HeaderText = "Price ($)";
             Price.Name = "Price";
+            Price.ReadOnly = true;
             // 
             // Description
             // 
+            Description.DataPropertyName = "Description";
+            Description.FillWeight = 220F;
             Description.HeaderText = "Description";
             Description.Name = "Description";
+            Description.ReadOnly = true;
             // 
             // Edit
             // 
+            Edit.FillWeight = 70F;
             Edit.HeaderText = "Edit";
             Edit.Name = "Edit";
+            Edit.ReadOnly = true;
+            Edit.Text = "Edit";
+            Edit.UseColumnTextForButtonValue = true;
             // 
             // Delete
             // 
+            Delete.FillWeight = 70F;
             Delete.HeaderText = "Delete";
             Delete.Name = "Delete";
+            Delete.ReadOnly = true;
+            Delete.Text = "Delete";
+            Delete.UseColumnTextForButtonValue = true;
+            // 
+            // panelTop
+            // 
+            panelTop.BackColor = Color.FromArgb(20, 20, 20);
+            panelTop.Controls.Add(labelTitle);
+            panelTop.Controls.Add(addProductBtn);
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(982, 60);
+            panelTop.TabIndex = 3;
+            // 
+            // labelTitle
+            // 
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            labelTitle.ForeColor = Color.White;
+            labelTitle.Location = new Point(20, 18);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(215, 25);
+            labelTitle.TabIndex = 2;
+            labelTitle.Text = "Управління товарами";
+            // 
+            // panelContainer
+            // 
+            panelContainer.BackColor = Color.FromArgb(25, 25, 25);
+            panelContainer.Controls.Add(dataGridProducts);
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.Location = new Point(0, 60);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Padding = new Padding(15);
+            panelContainer.Size = new Size(982, 646);
+            panelContainer.TabIndex = 4;
             // 
             // ManageProductsControl
             // 
-            Controls.Add(dataGridProducts);
-            Controls.Add(addProductBtn);
+            BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(panelContainer);
+            Controls.Add(panelTop);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Name = "ManageProductsControl";
-            Size = new Size(735, 614);
+            Size = new Size(982, 706);
             ((System.ComponentModel.ISupportInitialize)dataGridProducts).EndInit();
+            panelTop.ResumeLayout(false);
+            panelTop.PerformLayout();
+            panelContainer.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -115,5 +210,8 @@
         private DataGridViewTextBoxColumn Description;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private Panel panelTop;
+        private Label labelTitle;
+        private Panel panelContainer;
     }
 }

@@ -12,47 +12,9 @@ using MilitaryEquipmentStore.Models;
 
 namespace MilitaryEquipmentStore.Controls
 {
-    //public partial class ProductCardUserControl : UserControl
-    //{      
-    //    public ProductCardUserControl()
-    //    {
-    //        InitializeComponent();
-    //        this.Click += OnProductCardClick;
-
-    //        foreach (Control control in this.Controls)
-    //        {
-    //            control.Click += OnProductCardClick;
-    //        }
-    //    }
-
-    //    public ProductCardUserControl(Electronics e) : this()
-    //    {
-    //        labelTitle.Text = $"{e.Article} — {e.DeviceType}";
-    //        labelSpecs.Text = $"Дальність: {e.RangeKm} км\n" + $"Потужність: {e.PowerKw} кВт\n" + $"Вага: {e.Weight} кг";
-    //    }
-
-    //    public ProductCardUserControl(Transport t) : this()
-    //    {
-    //        labelTitle.Text = $"{t.Article} — {t.TransportType}";
-    //        labelSpecs.Text = $"Макс. швидкість: {t.MaxSpeed} км/г\n" + $"Потужність двигуна: {t.EnginePower} л.с.\n" + $"Вантажопід.: {t.LoadCapacity} т";
-    //    }
-
-    //    public ProductCardUserControl(Ammunition a) : this()
-    //    {
-    //        labelTitle.Text = $"{a.Article} — {a.AmmoType}";
-    //        labelSpecs.Text = $"Калібр: {a.Caliber}\n" + $"Вага: {a.Weight} кг\n" + $"Дальність: {a.EffectiveRange} м";
-    //    }
-
-    //    private void OnProductCardClick(object sender, EventArgs e)
-    //    {
-    //        ProductPageForm productPage = new ProductPageForm();
-    //        productPage.Show();
-    //    }
-    //}
-
     public partial class ProductCardUserControl : UserControl
     {
-        public string ProductArticle { get; set; }  // <-- Просто свойство
+        public string ProductArticle { get; set; }
 
         public ProductCardUserControl()
         {
@@ -64,21 +26,21 @@ namespace MilitaryEquipmentStore.Controls
 
         public ProductCardUserControl(Electronics e) : this()
         {
-            ProductArticle = e.Article;  // <-- Просто присваиваем
+            ProductArticle = e.Article;
             labelTitle.Text = $"{e.Article} — {e.DeviceType}";
             labelSpecs.Text = $"Дальність: {e.RangeKm} км\nПотужність: {e.PowerKw} кВт\nВага: {e.Weight} кг";
         }
 
         public ProductCardUserControl(Transport t) : this()
         {
-            ProductArticle = t.Article;  // <-- Просто присваиваем
+            ProductArticle = t.Article;
             labelTitle.Text = $"{t.Article} — {t.TransportType}";
             labelSpecs.Text = $"Макс. швидкість: {t.MaxSpeed} км/г\nПотужність двигуна: {t.EnginePower} л.с.\nВантажопід.: {t.LoadCapacity} т";
         }
 
         public ProductCardUserControl(Ammunition a) : this()
         {
-            ProductArticle = a.Article;  // <-- Просто присваиваем
+            ProductArticle = a.Article;
             labelTitle.Text = $"{a.Article} — {a.AmmoType}";
             labelSpecs.Text = $"Калібр: {a.Caliber}\nВага: {a.Weight} кг\nДальність: {a.EffectiveRange} м";
         }
