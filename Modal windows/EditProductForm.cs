@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MilitaryEquipmentStore.Controls.Panels.CategoryEditPanels;
 using MilitaryEquipmentStore.Models;
-using MySql.Data.MySqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MilitaryEquipmentStore.Modal_windows
 {
@@ -17,15 +16,12 @@ namespace MilitaryEquipmentStore.Modal_windows
     {
         private string _article;
         private string _type;
+        private UserControl _currentCategoryControl;
 
         public EditProductForm(string article)
         {
             _article = article;
             InitializeComponent();
-
-            transportFormPanel.Visible = false;
-            electronicPanel.Visible = false;
-            ammoPanel.Visible = false;
 
             LoadMainProductData();
             LoadCategoryData();
@@ -56,29 +52,18 @@ namespace MilitaryEquipmentStore.Modal_windows
 
         private void LoadCategoryData()
         {
-            if (_type == "радіоелектроніка")
+            if (_currentCategoryControl != null)
             {
-                electronicPanel.Visible = true;
-
-                string query = $"select * from electronics where article = '{_article}'";
-
-                using (var reader = DbConfig.ReadData(query))
-                {
-                    if (reader.Read())
-                    {
-                        textBox5.Text = reader["range_km"].ToString();
-                        textBox7.Text = reader["power_kw"].ToString();
-                        textBox8.Text = reader["weight"].ToString();
-                        textBox9.Text = reader["protection_level"].ToString();
-                        textBox17.Text = reader["power_supply"].ToString();
-
-                        comboBox5.SelectedItem = reader["frequency_band"].ToString();
-                    }
-                }
+                otherPanel.Controls.Remove(_currentCategoryControl);
+                _currentCategoryControl.Dispose();
             }
-            else if (_type == "транспорт")
+
+            if (_type == "транспорт")
             {
-                transportFormPanel.Visible = true;
+                var transportControl = new TransportPanel();
+                transportControl.Dock = DockStyle.Fill;
+                otherPanel.Controls.Add(transportControl);
+                _currentCategoryControl = transportControl;
 
                 string query = $"select * from transport where article = '{_article}'";
 
@@ -86,21 +71,48 @@ namespace MilitaryEquipmentStore.Modal_windows
                 {
                     if (reader.Read())
                     {
-                        textBox10.Text = reader["load_capacity"].ToString();
-                        textBox11.Text = reader["max_speed"].ToString();
-                        textBox12.Text = reader["fuel_type"].ToString();
-                        textBox13.Text = reader["engine_power"].ToString();
-                        textBox14.Text = reader["crew"].ToString();
-                        textBox15.Text = reader["transmission_type"].ToString();
-                        textBox16.Text = reader["weight"].ToString();
-
-                        comboBox2.SelectedItem = reader["transport_type"].ToString();
+                        transportControl.txtLoadCapacity.Text = reader["load_capacity"].ToString();
+                        transportControl.txtMaxSpeed.Text = reader["max_speed"].ToString();
+                        transportControl.txtFuelType.Text = reader["fuel_type"].ToString();
+                        transportControl.txtEnginePower.Text = reader["engine_power"].ToString();
+                        transportControl.txtCrew.Text = reader["crew"].ToString();
+                        transportControl.txtTransmissionType.Text = reader["transmission_type"].ToString();
+                        transportControl.txtWeight.Text = reader["weight"].ToString();
+                        transportControl.cmbTransportType.SelectedItem = reader["transport_type"].ToString();
                     }
                 }
             }
+
+            if (_type == "радіоелектроніка")
+            {
+                var electronicsControl = new ElectronicsPanel();
+                electronicsControl.Dock = DockStyle.Fill;
+                otherPanel.Controls.Add(electronicsControl);
+                _currentCategoryControl = electronicsControl;
+
+                string query = $"select * from electronics where article = '{_article}'";
+
+                using (var reader = DbConfig.ReadData(query))
+                {
+                    if (reader.Read())
+                    {
+                        electronicsControl.txtRange.Text = reader["range_km"].ToString();
+                        electronicsControl.txtPower.Text = reader["power_kw"].ToString();
+                        electronicsControl.txtWeight.Text = reader["weight"].ToString();
+                        electronicsControl.txtProtectionLevel.Text = reader["protection_level"].ToString();
+                        electronicsControl.txtPowerSupply.Text = reader["power_supply"].ToString();
+                        electronicsControl.cmbFrequencyBand.SelectedItem = reader["frequency_band"].ToString();
+                        electronicsControl.cmbDeviceType.SelectedItem = reader["device_type"].ToString();
+                    }
+                }
+            }
+
             else if (_type == "боєприпаси")
             {
-                ammoPanel.Visible = true;
+                var ammoControl = new AmmunitionPanel();
+                ammoControl.Dock = DockStyle.Fill;
+                otherPanel.Controls.Add(ammoControl);
+                _currentCategoryControl = ammoControl;
 
                 string query = $"select * from ammunition where article = '{_article}'";
 
@@ -108,15 +120,14 @@ namespace MilitaryEquipmentStore.Modal_windows
                 {
                     if (reader.Read())
                     {
-                        textBox18.Text = reader["caliber"].ToString();
-                        textBox19.Text = reader["weight"].ToString();
-                        textBox20.Text = reader["length"].ToString();
-                        textBox21.Text = reader["effective_range"].ToString();
-                        textBox22.Text = reader["storage_temp"].ToString();
-                        textBox23.Text = reader["shelf_life"].ToString();
-
-                        comboBox3.SelectedItem = reader["ammo_type"].ToString();
-                        comboBox4.SelectedItem = reader["explosive_type"].ToString();
+                        ammoControl.txtCaliber.Text = reader["caliber"].ToString();
+                        ammoControl.txtWeight.Text = reader["weight"].ToString();
+                        ammoControl.txtLength.Text = reader["length"].ToString();
+                        ammoControl.txtEffectiveRange.Text = reader["effective_range"].ToString();
+                        ammoControl.txtStorageTemp.Text = reader["storage_temp"].ToString();
+                        ammoControl.txtShelfLife.Text = reader["shelf_life"].ToString();
+                        ammoControl.cmbAmmoType.SelectedItem = reader["ammo_type"].ToString();
+                        ammoControl.cmbExplosiveType.SelectedItem = reader["explosive_type"].ToString();
                     }
                 }
             }
@@ -137,55 +148,64 @@ namespace MilitaryEquipmentStore.Modal_windows
 
         private void UpdateTransport()
         {
-            Transport transport = new Transport
+            if (_currentCategoryControl is TransportPanel transportControl)
             {
-                Article = textBox1.Text,
-                TransportType = comboBox2.SelectedItem.ToString(),
-                LoadCapacity = decimal.TryParse(textBox10.Text, out var load) ? load : 0,
-                MaxSpeed = int.TryParse(textBox11.Text, out var speed) ? speed : 0,
-                FuelType = textBox12.Text,
-                EnginePower = int.TryParse(textBox13.Text, out var power) ? power : 0,
-                Crew = int.TryParse(textBox14.Text, out var crew) ? crew : 0,
-                TransmissionType = textBox15.Text,
-                Weight = decimal.TryParse(textBox16.Text, out var weight) ? weight : 0
-            };
+                Transport transport = new Transport
+                {
+                    Article = textBox1.Text,
+                    TransportType = transportControl.cmbTransportType.SelectedItem?.ToString(),
+                    LoadCapacity = decimal.TryParse(transportControl.txtLoadCapacity.Text, out var load) ? load : 0,
+                    MaxSpeed = int.TryParse(transportControl.txtMaxSpeed.Text, out var speed) ? speed : 0,
+                    FuelType = transportControl.txtFuelType.Text,
+                    EnginePower = int.TryParse(transportControl.txtEnginePower.Text, out var power) ? power : 0,
+                    Crew = int.TryParse(transportControl.txtCrew.Text, out var crew) ? crew : 0,
+                    TransmissionType = transportControl.txtTransmissionType.Text,
+                    Weight = decimal.TryParse(transportControl.txtWeight.Text, out var weight) ? weight : 0
+                };
 
-            transport.Update(_article);
+                transport.Update(_article);
+            }
         }
 
         private void UpdateElectronics()
         {
-            Electronics electronics = new Electronics
+            if (_currentCategoryControl is ElectronicsPanel electronicsControl)
             {
-                Article = textBox1.Text,
-                DeviceType = comboBox1.SelectedItem.ToString(),
-                RangeKm = decimal.TryParse(textBox5.Text, out var range) ? range : 0,
-                FrequencyBand = comboBox5.SelectedItem.ToString(),
-                PowerKw = decimal.TryParse(textBox7.Text, out var power) ? power : 0,
-                Weight = decimal.TryParse(textBox8.Text, out var weight) ? weight : 0,
-                ProtectionLevel = textBox9.Text,
-                PowerSupply = textBox17.Text
-            };
+                Electronics electronics = new Electronics
+                {
+                    Article = textBox1.Text,
+                    DeviceType = electronicsControl.cmbDeviceType.SelectedItem?.ToString(),
+                    RangeKm = decimal.TryParse(electronicsControl.txtRange.Text, out var range) ? range : 0,
+                    FrequencyBand = electronicsControl.cmbFrequencyBand.SelectedItem?.ToString(),
+                    PowerKw = decimal.TryParse(electronicsControl.txtPower.Text, out var power) ? power : 0,
+                    Weight = decimal.TryParse(electronicsControl.txtWeight.Text, out var weight) ? weight : 0,
+                    ProtectionLevel = electronicsControl.txtProtectionLevel.Text,
+                    PowerSupply = electronicsControl.txtPowerSupply.Text
+                };
 
-            electronics.Update(_article);
+                electronics.Update(_article);
+            }
         }
 
         private void UpdateAmmunition()
         {
-            Ammunition ammunition = new Ammunition
+            if (_currentCategoryControl is AmmunitionPanel ammoControl)
             {
-                Article = textBox1.Text,
-                Caliber = textBox18.Text,
-                AmmoType = comboBox3.SelectedItem.ToString(),
-                Weight = decimal.TryParse(textBox19.Text, out var weight) ? weight : 0,
-                Length = decimal.TryParse(textBox20.Text, out var length) ? length : 0,
-                ExplosiveType = comboBox4.SelectedItem.ToString(),
-                EffectiveRange = int.TryParse(textBox21.Text, out var range) ? range : 0,
-                StorageTemp = textBox22.Text,
-                ShelfLife = int.TryParse(textBox23.Text, out var shelf) ? shelf : 0
-            };
+                Ammunition ammunition = new Ammunition
+                {
+                    Article = textBox1.Text,
+                    Caliber = ammoControl.txtCaliber.Text,
+                    AmmoType = ammoControl.cmbAmmoType.SelectedItem?.ToString(),
+                    Weight = decimal.TryParse(ammoControl.txtWeight.Text, out var weight) ? weight : 0,
+                    Length = decimal.TryParse(ammoControl.txtLength.Text, out var length) ? length : 0,
+                    ExplosiveType = ammoControl.cmbExplosiveType.SelectedItem?.ToString(),
+                    EffectiveRange = int.TryParse(ammoControl.txtEffectiveRange.Text, out var range) ? range : 0,
+                    StorageTemp = ammoControl.txtStorageTemp.Text,
+                    ShelfLife = int.TryParse(ammoControl.txtShelfLife.Text, out var shelf) ? shelf : 0
+                };
 
-            ammunition.Update(_article);
+                ammunition.Update(_article);
+            }
         }
 
         private void confirmButton_Click(object sender, EventArgs e)

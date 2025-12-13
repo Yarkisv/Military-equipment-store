@@ -129,7 +129,7 @@ namespace MilitaryEquipmentStore.Forms
             rootPanel.Dock = DockStyle.Fill;
             rootPanel.Location = new Point(0, 0);
             rootPanel.Name = "rootPanel";
-            rootPanel.Size = new Size(1179, 736);
+            rootPanel.Size = new Size(1208, 736);
             rootPanel.TabIndex = 0;
             // 
             // contentPanel
@@ -139,7 +139,7 @@ namespace MilitaryEquipmentStore.Forms
             contentPanel.Location = new Point(220, 0);
             contentPanel.Name = "contentPanel";
             contentPanel.Padding = new Padding(1);
-            contentPanel.Size = new Size(959, 736);
+            contentPanel.Size = new Size(988, 736);
             contentPanel.TabIndex = 1;
             // 
             // sidebarPanel
@@ -192,7 +192,7 @@ namespace MilitaryEquipmentStore.Forms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            ClientSize = new Size(1179, 736);
+            ClientSize = new Size(1208, 736);
             Controls.Add(rootPanel);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             ForeColor = Color.White;

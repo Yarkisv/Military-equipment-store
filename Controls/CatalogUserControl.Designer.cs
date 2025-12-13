@@ -49,7 +49,7 @@
             // filtersPanel
             // 
             filtersPanel.AutoScroll = true;
-            filtersPanel.BackColor = Color.Silver;
+            filtersPanel.BackColor = Color.FromArgb(25, 25, 25);
             filtersPanel.BorderStyle = BorderStyle.FixedSingle;
             filtersPanel.Dock = DockStyle.Right;
             filtersPanel.Location = new Point(658, 60);

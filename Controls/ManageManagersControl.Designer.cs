@@ -39,6 +39,7 @@
             panelTop = new Panel();
             labelTitle = new Label();
             panelContainer = new Panel();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridManagers).BeginInit();
             panelTop.SuspendLayout();
             panelContainer.SuspendLayout();
@@ -129,7 +130,7 @@
             // Edit
             // 
             Edit.FillWeight = 80F;
-            Edit.HeaderText = "Edit"; // ИЗМЕНЕНО: установлен заголовок "Edit"
+            Edit.HeaderText = "Edit";
             Edit.Name = "Edit";
             Edit.ReadOnly = true;
             Edit.Text = "Edit";
@@ -138,7 +139,7 @@
             // Delete
             // 
             Delete.FillWeight = 80F;
-            Delete.HeaderText = "Delete"; // ИЗМЕНЕНО: установлен заголовок "Delete"
+            Delete.HeaderText = "Delete";
             Delete.Name = "Delete";
             Delete.ReadOnly = true;
             Delete.Text = "Delete";
@@ -147,6 +148,7 @@
             // panelTop
             // 
             panelTop.BackColor = Color.FromArgb(20, 20, 20);
+            panelTop.Controls.Add(button1);
             panelTop.Controls.Add(labelTitle);
             panelTop.Controls.Add(addManagerBtn);
             panelTop.Dock = DockStyle.Top;
@@ -177,6 +179,21 @@
             panelContainer.Size = new Size(982, 646);
             panelContainer.TabIndex = 4;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button1.BackColor = Color.FromArgb(40, 40, 40);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(603, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(180, 40);
+            button1.TabIndex = 3;
+            button1.Text = "Оновити список";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // ManageManagersControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -206,5 +223,6 @@
         private Panel panelTop;
         private Label labelTitle;
         private Panel panelContainer;
+        private Button button1;
     }
 }

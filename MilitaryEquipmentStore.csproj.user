@@ -28,6 +28,15 @@
     <Compile Update="Controls\Panels\AmmunitionFiltersPanelControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Controls\Panels\CategoryEditPanels\AmmunitionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Panels\CategoryEditPanels\ElectronicsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Panels\CategoryEditPanels\TransportPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\Panels\ElectronicsFiltersPanelControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
