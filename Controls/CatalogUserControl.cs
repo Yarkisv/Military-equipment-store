@@ -81,135 +81,12 @@ namespace MilitaryEquipmentStore.Controls
 
         private void LoadProducts()
         {
-            string query = "";
-
-            if (category_ == "радіоелектроніка") query = @"
-                select 
-                    p.product_id,
-                    p.type,
-                    p.article,
-                    p.name_,
-                    p.price,
-                    p.description_,
-                    e.device_type,
-                    e.range_km,
-                    e.frequency_band,
-                    e.power_kw,
-                    e.weight,
-                    e.protection_level,
-                    e.power_supply
-                from products p
-                join electronics e on p.article = e.article
-                where p.type = 'радіоелектроніка';";
-            else if (category_ == "транспорт") query = @"
-                select
-                    p.product_id,
-                    p.type,
-                    p.article,
-                    p.name_,
-                    p.price,
-                    p.description_,
-                    t.transport_type,
-                    t.load_capacity,
-                    t.max_speed,
-                    t.fuel_type,
-                    t.engine_power,
-                    t.crew,
-                    t.transmission_type,
-                    t.weight
-                from products p
-                join transport t on p.article = t.article
-                where p.type = 'транспорт';";
-            else if (category_ == "боєприпаси") query = @"
-                select 
-                    p.product_id,
-                    p.type,
-                    p.article,
-                    p.name_,
-                    p.price,
-                    p.description_,
-                    a.caliber,
-                    a.ammo_type,
-                    a.weight,
-                    a.length,
-                    a.explosive_type,
-                    a.effective_range,
-                    a.storage_temp,
-                    a.shelf_life
-                from products p
-                join ammunition a on p.article = a.article
-                where p.type = 'боєприпаси';";
-
-            using (var reader = DbConfig.ReadData(query))
-            {
-                if (reader == null) return;
-
-                while (reader.Read())
-                {
-                    if (category_ == "радіоелектроніка")
-                    {
-                        var item = new Electronics
-                        {
-                            Type = reader["type"].ToString(),
-                            Article = reader["article"].ToString(),
-                            Name = reader["name_"].ToString(),
-                            Price = reader.GetDecimal("price"),
-                            Description = reader["description_"].ToString(),
-                            DeviceType = reader["device_type"].ToString(),
-                            RangeKm = reader.GetDecimal("range_km"),
-                            FrequencyBand = reader["frequency_band"].ToString(),
-                            PowerKw = reader.GetDecimal("power_kw"),
-                            Weight = reader.GetDecimal("weight"),
-                            ProtectionLevel = reader["protection_level"].ToString(),
-                            PowerSupply = reader["power_supply"].ToString()
-                        };
-
-                        electronicsList[item.Article] = item;
-                    }
-                    else if (category_ == "транспорт")
-                    {
-                        var item = new Transport
-                        {
-                            Type = reader["type"].ToString(),
-                            Article = reader["article"].ToString(),
-                            Name = reader["name_"].ToString(),
-                            Price = reader.GetDecimal("price"),
-                            Description = reader["description_"].ToString(),
-                            TransportType = reader["transport_type"].ToString(),
-                            LoadCapacity = reader.GetDecimal("load_capacity"),
-                            MaxSpeed = reader.GetInt32("max_speed"),
-                            FuelType = reader["fuel_type"].ToString(),
-                            EnginePower = reader.GetInt32("engine_power"),
-                            Crew = reader.GetInt32("crew"),
-                            TransmissionType = reader["transmission_type"].ToString(),
-                            Weight = reader.GetDecimal("weight")
-                        };
-
-                        transportList[item.Article] = item;
-                    }
-                    else if (category_ == "боєприпаси")
-                    {
-                        var item = new Ammunition
-                        {
-                            Type = reader["type"].ToString(),
-                            Article = reader["article"].ToString(),
-                            Name = reader["name_"].ToString(),
-                            Price = reader.GetDecimal("price"),
-                            Description = reader["description_"].ToString(),
-                            Caliber = reader["caliber"].ToString(),
-                            AmmoType = reader["ammo_type"].ToString(),
-                            Weight = reader.GetDecimal("weight"),
-                            Length = reader.GetDecimal("length"),
-                            ExplosiveType = reader["explosive_type"].ToString(),
-                            EffectiveRange = reader.GetInt32("effective_range"),
-                            StorageTemp = reader["storage_temp"].ToString(),
-                            ShelfLife = reader.GetInt32("shelf_life")
-                        };
-
-                        ammunitionList[item.Article] = item;
-                    }
-                }
-            }
+            if (category_ == "радіоелектроніка")
+                electronicsList = Electronics.GetAll();
+            else if (category_ == "транспорт")
+                transportList = Transport.GetAll();
+            else if (category_ == "боєприпаси")
+                ammunitionList = Ammunition.GetAll();
         }
 
         private void ApplyFilters(Dictionary<string, object> filters)
@@ -233,40 +110,6 @@ namespace MilitaryEquipmentStore.Controls
                     .ToDictionary(kvp => kvp.Key, kvp => (Product)kvp.Value);
             }
         }
-
-        //private void RenderProducts()
-        //{
-        //    flowLayoutPanelProducts.Controls.Clear();
-
-        //    foreach (var item in filteredProducts.Values)
-        //    {
-        //        if (category_ == "транспорт" && item is Transport transport)
-        //        {
-        //            var card = new ProductCardUserControl(transport)
-        //            {
-        //                Tag = new ProductInfo { Article = transport.Article, Type = transport.Type }
-        //            };
-        //            flowLayoutPanelProducts.Controls.Add(card);
-        //        }
-        //        else if (category_ == "радіоелектроніка" && item is Electronics electronics)
-        //        {
-        //            var card = new ProductCardUserControl(electronics)
-        //            {
-        //                Tag = new ProductInfo { Article = electronics.Article, Type = electronics.Type }
-        //            };
-        //            flowLayoutPanelProducts.Controls.Add(card);
-        //        }
-        //        else if (category_ == "боєприпаси" && item is Ammunition ammunition)
-        //        {
-        //            var card = new ProductCardUserControl(ammunition)
-        //            {
-        //                Tag = new ProductInfo { Article = ammunition.Article, Type = ammunition.Type }
-        //            };
-        //            flowLayoutPanelProducts.Controls.Add(card);
-        //        }
-        //    }
-        //}
-
         private void RenderProducts()
         {
             flowLayoutPanelProducts.Controls.Clear();
@@ -291,10 +134,4 @@ namespace MilitaryEquipmentStore.Controls
             }
         }
     }
-}
-
-public class ProductInfo
-{
-    public string Article { get; set; }
-    public string Type { get; set; }
 }

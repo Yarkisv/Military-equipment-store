@@ -17,11 +17,99 @@ namespace MilitaryEquipmentStore.Models
         public string TransmissionType { get; set; }
         public decimal Weight { get; set; }
 
+        public static Dictionary<string, Transport> GetAll()
+        {
+            var result = new Dictionary<string, Transport>();
+            string query = @"
+            SELECT
+                p.product_id,
+                p.type,
+                p.article,
+                p.name_,
+                p.price,
+                p.description_,
+                t.transport_type,
+                t.load_capacity,
+                t.max_speed,
+                t.fuel_type,
+                t.engine_power,
+                t.crew,
+                t.transmission_type,
+                t.weight
+            FROM products p
+            JOIN transport t ON p.article = t.article
+            WHERE p.type = 'транспорт';";
+
+            using (var reader = DbConfig.ReadData(query))
+            {
+                if (reader == null) return result;
+
+                while (reader.Read())
+                {
+                    var item = new Transport
+                    {
+                        Type = reader["type"].ToString(),
+                        Article = reader["article"].ToString(),
+                        Name = reader["name_"].ToString(),
+                        Price = reader.GetDecimal("price"),
+                        Description = reader["description_"].ToString(),
+                        TransportType = reader["transport_type"].ToString(),
+                        LoadCapacity = reader.GetDecimal("load_capacity"),
+                        MaxSpeed = reader.GetInt32("max_speed"),
+                        FuelType = reader["fuel_type"].ToString(),
+                        EnginePower = reader.GetInt32("engine_power"),
+                        Crew = reader.GetInt32("crew"),
+                        TransmissionType = reader["transmission_type"].ToString(),
+                        Weight = reader.GetDecimal("weight")
+                    };
+
+                    result[item.Article] = item;
+                }
+            }
+
+            return result;
+        }
+
         public void Update(string article) 
         {
             string query = $"update transport set transport_type = '{TransportType}', load_capacity = '{LoadCapacity.ToString(System.Globalization.CultureInfo.InvariantCulture)}', max_speed = '{MaxSpeed}', fuel_type = '{FuelType}', engine_power = '{EnginePower}', crew = '{Crew}', transmission_type = '{TransmissionType}', weight = '{Weight.ToString(System.Globalization.CultureInfo.InvariantCulture)}' where article = '{Article}'";
 
             DbConfig.ExecuteQuery(query);
+        }
+
+        public void Insert()
+        {
+            string query = $@"
+                    insert into transport (article, transport_type, load_capacity, max_speed, fuel_type, engine_power, crew, transmission_type, weight)
+                    values ('{Article}', '{TransportType}', {LoadCapacity.ToString(System.Globalization.CultureInfo.InvariantCulture)}, {MaxSpeed}, '{FuelType}', {EnginePower}, {Crew}, '{TransmissionType}', {Weight.ToString(System.Globalization.CultureInfo.InvariantCulture)})";
+
+            DbConfig.ExecuteQuery(query);
+        }
+
+        public static Transport GetByArticle(string article)
+        {
+            string query = $"SELECT * FROM transport WHERE article = '{article}'";
+
+            using (var reader = DbConfig.ReadData(query))
+            {
+                if (reader != null && reader.Read())
+                {
+                    return new Transport
+                    {
+                        Article = reader["article"].ToString(),
+                        TransportType = reader["transport_type"].ToString(),
+                        LoadCapacity = Convert.ToDecimal(reader["load_capacity"]),
+                        MaxSpeed = Convert.ToInt32(reader["max_speed"]),
+                        FuelType = reader["fuel_type"].ToString(),
+                        EnginePower = Convert.ToInt32(reader["engine_power"]),
+                        Crew = Convert.ToInt32(reader["crew"]),
+                        TransmissionType = reader["transmission_type"].ToString(),
+                        Weight = Convert.ToDecimal(reader["weight"]),
+                    };
+                }
+            }
+
+            return null;
         }
 
         public bool ApplyFilters(Dictionary<string, object> filters) 

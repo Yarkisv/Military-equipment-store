@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MilitaryEquipmentStore.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-using System.Xml.Linq;
 
 namespace MilitaryEquipmentStore.Forms
 {

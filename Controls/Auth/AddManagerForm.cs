@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MilitaryEquipmentStore.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using MilitaryEquipmentStore.Models;
 
 namespace MilitaryEquipmentStore.Modal_windows
 {
@@ -17,12 +17,14 @@ namespace MilitaryEquipmentStore.Modal_windows
         public AddManagerForm()
         {
             InitializeComponent();
+
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
         }
 
         private void AddManagerForm_Load(object sender, EventArgs e)
         {
-            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
-            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+            
         }
 
         private void addManager_Click(object sender, EventArgs e)
@@ -34,9 +36,7 @@ namespace MilitaryEquipmentStore.Modal_windows
 
             string newManagerHashedPassword = BCrypt.Net.BCrypt.HashPassword(newManagerPassword);
 
-            string query = $"insert into users (fullname, hashPassword, phoneNumber, email_ ) values ('{newManagerFullname}', '{newManagerHashedPassword}', '{newManagerPhone}', '{newManagerEmail}')";
-
-            DbConfig.ExecuteQuery(query);
+            User.CreateUser(newManagerFullname, newManagerHashedPassword, newManagerPhone, newManagerEmail, "manager");
 
             this.Hide();
         }

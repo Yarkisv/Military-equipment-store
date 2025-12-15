@@ -17,11 +17,99 @@ namespace MilitaryEquipmentStore.Models
         public string StorageTemp { get; set; }
         public int ShelfLife { get; set; }
 
+        public static Dictionary<string, Ammunition> GetAll()
+        {
+            var result = new Dictionary<string, Ammunition>();
+            string query = @"
+            SELECT 
+                p.product_id,
+                p.type,
+                p.article,
+                p.name_,
+                p.price,
+                p.description_,
+                a.caliber,
+                a.ammo_type,
+                a.weight,
+                a.length,
+                a.explosive_type,
+                a.effective_range,
+                a.storage_temp,
+                a.shelf_life
+            FROM products p
+            JOIN ammunition a ON p.article = a.article
+            WHERE p.type = 'боєприпаси';";
+
+            using (var reader = DbConfig.ReadData(query))
+            {
+                if (reader == null) return result;
+
+                while (reader.Read())
+                {
+                    var item = new Ammunition
+                    {
+                        Type = reader["type"].ToString(),
+                        Article = reader["article"].ToString(),
+                        Name = reader["name_"].ToString(),
+                        Price = reader.GetDecimal("price"),
+                        Description = reader["description_"].ToString(),
+                        Caliber = reader["caliber"].ToString(),
+                        AmmoType = reader["ammo_type"].ToString(),
+                        Weight = reader.GetDecimal("weight"),
+                        Length = reader.GetDecimal("length"),
+                        ExplosiveType = reader["explosive_type"].ToString(),
+                        EffectiveRange = reader.GetInt32("effective_range"),
+                        StorageTemp = reader["storage_temp"].ToString(),
+                        ShelfLife = reader.GetInt32("shelf_life")
+                    };
+
+                    result[item.Article] = item;
+                }
+            }
+
+            return result;
+        }
+
+        public void Insert()
+        {
+            string query = $@"
+            insert into ammunition (article, caliber, ammo_type, weight, length, explosive_type, effective_range, storage_temp, shelf_life)
+            values ('{Article}', '{Caliber}', '{AmmoType}', {Weight.ToString(System.Globalization.CultureInfo.InvariantCulture)}, {Length.ToString(System.Globalization.CultureInfo.InvariantCulture)}, '{ExplosiveType}', {EffectiveRange}, '{StorageTemp}', {ShelfLife})";
+
+            DbConfig.ExecuteQuery(query);
+        }
+
         public void Update(string article)
         {
             string query = $"update ammunition set caliber = '{Caliber}', ammo_type = '{AmmoType}', weight = '{Weight.ToString(System.Globalization.CultureInfo.InvariantCulture)}', length = '{Length.ToString(System.Globalization.CultureInfo.InvariantCulture)}', explosive_type = '{ExplosiveType}', effective_range = '{EffectiveRange}', storage_temp = '{StorageTemp}', shelf_life = '{ShelfLife}' where article = '{Article}'";
 
             DbConfig.ExecuteQuery(query);
+        }
+
+        public static Ammunition GetByArticle(string article)
+        {
+            string query = $"SELECT * FROM ammunition WHERE article = '{article}'";
+
+            using (var reader = DbConfig.ReadData(query))
+            {
+                if (reader != null && reader.Read())
+                {
+                    return new Ammunition
+                    {
+                        Article = reader["article"].ToString(),
+                        Caliber = reader["caliber"].ToString(),
+                        AmmoType = reader["ammo_type"].ToString(),
+                        Weight = Convert.ToDecimal(reader["weight"]),
+                        Length = Convert.ToDecimal(reader["length"]),
+                        ExplosiveType = reader["explosive_type"].ToString(),
+                        EffectiveRange = Convert.ToInt32(reader["effective_range"]),
+                        StorageTemp = reader["storage_temp"].ToString(),
+                        ShelfLife = Convert.ToInt32(reader["shelf_life"])
+                    };
+                }
+            }
+
+            return null;
         }
 
         public bool ApplyFilters(Dictionary<string, object> filters)

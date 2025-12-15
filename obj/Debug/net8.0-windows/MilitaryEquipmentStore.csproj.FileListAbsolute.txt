@@ -55,3 +55,4 @@ D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\Mil
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Panels.CategoryEditPanels.TransportPanel.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Panels.CategoryEditPanels.ElectronicsPanel.resources
 D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Controls.Panels.CategoryEditPanels.AmmunitionPanel.resources
+D:\c#\MilitaryEquipmentStore\MilitaryEquipmentStore\obj\Debug\net8.0-windows\MilitaryEquipmentStore.Modal_windows.AddProductForm.resources

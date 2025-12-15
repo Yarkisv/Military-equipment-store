@@ -48,21 +48,11 @@ namespace MilitaryEquipmentStore.Controls.Auth
 
             try
             {
-                string query = $"select count(*) from users where email_ = '{email}';";
-
-                using (var reader = DbConfig.ReadData(query))
+                if (User.Exists(textBox2.Text.Trim()))
                 {
-                    if (reader != null && reader.Read())
-                    {
-                        int count = reader.GetInt32(0);
-
-                        if (count > 0)
-                        {
-                            MessageBox.Show("Клієнт з таким email вже існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            textBox2.Focus();
-                            return;
-                        }
-                    }
+                    MessageBox.Show("Клієнт з таким email вже існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox2.Focus();
+                    return;
                 }
 
                 User.CreateUser(fullname, password, phone, email);

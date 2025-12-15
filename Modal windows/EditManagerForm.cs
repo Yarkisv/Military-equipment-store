@@ -31,16 +31,12 @@ namespace MilitaryEquipmentStore.Modal_windows
 
         private void LoadManager()
         {
-            string query = $"select fullname, email_, phonenumber from users where id = '{manager_id}'";
-
-            using (var reader = DbConfig.ReadData(query))
+            User manager = User.GetById(manager_id);
+            if (manager != null)
             {
-                if (reader.Read())
-                {
-                    textBox1.Text = reader["fullname"].ToString();
-                    textBox2.Text = reader["email_"].ToString();
-                    textBox3.Text = reader["phonenumber"].ToString();
-                }
+                textBox1.Text = manager.Fullname;
+                textBox2.Text = manager.Email;
+                textBox3.Text = manager.Phonenumber;
             }
         }
 

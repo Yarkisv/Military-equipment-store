@@ -34,19 +34,14 @@ namespace MilitaryEquipmentStore.Modal_windows
 
         private void LoadMainProductData()
         {
-            string query = $"select type, article, name_, price, description_ from products where article = '{_article}'";
-
-            using (var reader = DbConfig.ReadData(query))
+            Product product = Product.GetByArticle(_article);
+            if (product != null)
             {
-                if (reader.Read())
-                {
-                    textBox1.Text = reader["article"].ToString();
-                    textBox2.Text = reader["name_"].ToString();
-                    textBox3.Text = reader["price"].ToString();
-                    textBox4.Text = reader["description_"].ToString();
-
-                    _type = reader["type"].ToString();
-                }
+                textBox1.Text = product.Article;
+                textBox2.Text = product.Name;
+                textBox3.Text = product.Price.ToString();
+                textBox4.Text = product.Description;
+                _type = product.Type;
             }
         }
 
@@ -65,21 +60,17 @@ namespace MilitaryEquipmentStore.Modal_windows
                 otherPanel.Controls.Add(transportControl);
                 _currentCategoryControl = transportControl;
 
-                string query = $"select * from transport where article = '{_article}'";
-
-                using (var reader = DbConfig.ReadData(query))
+                Transport transport = Transport.GetByArticle(_article);
+                if (transport != null)
                 {
-                    if (reader.Read())
-                    {
-                        transportControl.txtLoadCapacity.Text = reader["load_capacity"].ToString();
-                        transportControl.txtMaxSpeed.Text = reader["max_speed"].ToString();
-                        transportControl.txtFuelType.Text = reader["fuel_type"].ToString();
-                        transportControl.txtEnginePower.Text = reader["engine_power"].ToString();
-                        transportControl.txtCrew.Text = reader["crew"].ToString();
-                        transportControl.txtTransmissionType.Text = reader["transmission_type"].ToString();
-                        transportControl.txtWeight.Text = reader["weight"].ToString();
-                        transportControl.cmbTransportType.SelectedItem = reader["transport_type"].ToString();
-                    }
+                    transportControl.txtLoadCapacity.Text = transport.LoadCapacity.ToString();
+                    transportControl.txtMaxSpeed.Text = transport.MaxSpeed.ToString();
+                    transportControl.txtFuelType.Text = transport.FuelType;
+                    transportControl.txtEnginePower.Text = transport.EnginePower.ToString();
+                    transportControl.txtCrew.Text = transport.Crew.ToString();
+                    transportControl.txtTransmissionType.Text = transport.TransmissionType;
+                    transportControl.txtWeight.Text = transport.Weight.ToString();
+                    transportControl.cmbTransportType.SelectedItem = transport.TransportType;
                 }
             }
 
@@ -90,45 +81,37 @@ namespace MilitaryEquipmentStore.Modal_windows
                 otherPanel.Controls.Add(electronicsControl);
                 _currentCategoryControl = electronicsControl;
 
-                string query = $"select * from electronics where article = '{_article}'";
-
-                using (var reader = DbConfig.ReadData(query))
+                Electronics electronics = Electronics.GetByArticle(_article);
+                if (electronics != null)
                 {
-                    if (reader.Read())
-                    {
-                        electronicsControl.txtRange.Text = reader["range_km"].ToString();
-                        electronicsControl.txtPower.Text = reader["power_kw"].ToString();
-                        electronicsControl.txtWeight.Text = reader["weight"].ToString();
-                        electronicsControl.txtProtectionLevel.Text = reader["protection_level"].ToString();
-                        electronicsControl.txtPowerSupply.Text = reader["power_supply"].ToString();
-                        electronicsControl.cmbFrequencyBand.SelectedItem = reader["frequency_band"].ToString();
-                        electronicsControl.cmbDeviceType.SelectedItem = reader["device_type"].ToString();
-                    }
+                    electronicsControl.txtRange.Text = electronics.RangeKm.ToString();
+                    electronicsControl.txtPower.Text = electronics.PowerKw.ToString();
+                    electronicsControl.txtWeight.Text = electronics.Weight.ToString();
+                    electronicsControl.txtProtectionLevel.Text = electronics.ProtectionLevel;
+                    electronicsControl.txtPowerSupply.Text = electronics.PowerSupply;
+                    electronicsControl.cmbFrequencyBand.SelectedItem = electronics.FrequencyBand;
+                    electronicsControl.cmbDeviceType.SelectedItem = electronics.DeviceType;
                 }
             }
 
-            else if (_type == "боєприпаси")
+            if (_type == "боєприпаси")
             {
                 var ammoControl = new AmmunitionPanel();
                 ammoControl.Dock = DockStyle.Fill;
                 otherPanel.Controls.Add(ammoControl);
                 _currentCategoryControl = ammoControl;
 
-                string query = $"select * from ammunition where article = '{_article}'";
-
-                using (var reader = DbConfig.ReadData(query))
+                Ammunition ammo = Ammunition.GetByArticle(_article);
+                if (ammo != null)
                 {
-                    if (reader.Read())
-                    {
-                        ammoControl.txtCaliber.Text = reader["caliber"].ToString();
-                        ammoControl.txtWeight.Text = reader["weight"].ToString();
-                        ammoControl.txtLength.Text = reader["length"].ToString();
-                        ammoControl.txtEffectiveRange.Text = reader["effective_range"].ToString();
-                        ammoControl.txtStorageTemp.Text = reader["storage_temp"].ToString();
-                        ammoControl.txtShelfLife.Text = reader["shelf_life"].ToString();
-                        ammoControl.cmbAmmoType.SelectedItem = reader["ammo_type"].ToString();
-                        ammoControl.cmbExplosiveType.SelectedItem = reader["explosive_type"].ToString();
-                    }
+                    ammoControl.txtCaliber.Text = ammo.Caliber;
+                    ammoControl.txtWeight.Text = ammo.Weight.ToString();
+                    ammoControl.txtLength.Text = ammo.Length.ToString();
+                    ammoControl.txtEffectiveRange.Text = ammo.EffectiveRange.ToString();
+                    ammoControl.txtStorageTemp.Text = ammo.StorageTemp;
+                    ammoControl.txtShelfLife.Text = ammo.ShelfLife.ToString();
+                    ammoControl.cmbAmmoType.SelectedItem = ammo.AmmoType;
+                    ammoControl.cmbExplosiveType.SelectedItem = ammo.ExplosiveType;
                 }
             }
         }

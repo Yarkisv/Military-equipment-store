@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MilitaryEquipmentStore.Modal_windows;
+using MilitaryEquipmentStore.Models;
 
 namespace MilitaryEquipmentStore.Controls
 {
@@ -21,20 +22,17 @@ namespace MilitaryEquipmentStore.Controls
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-
+            AddProductForm addProductForm = new AddProductForm();
+            addProductForm.ShowDialog();
         }
 
         private void LoadProducts()
         {
-            string query = "select type, article, name_, price, description_ from products";
+            dataGridProducts.Rows.Clear();
 
-            using (var reader = DbConfig.ReadData(query))
+            foreach (var product in Product.GetAll())
             {
-                dataGridProducts.Rows.Clear();
-                while (reader.Read())
-                {
-                    dataGridProducts.Rows.Add(reader["type"], reader["article"], reader["name_"], reader["price"], reader["description_"], "Edit", "Delete");
-                }
+                dataGridProducts.Rows.Add(product.Type, product.Article, product.Name, product.Price, product.Description, "Edit", "Delete");
             }
         }
 
