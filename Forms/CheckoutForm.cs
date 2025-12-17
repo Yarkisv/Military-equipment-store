@@ -101,8 +101,8 @@ namespace MilitaryEquipmentStore.Forms
         {
             if (!string.IsNullOrEmpty(UserSession.CurrentUserEmail))
             {
-                lblClientInfo.Text = $"Клієнт: {UserSession.CurrentUserEmail}";
-
+                lblClientInfo.Text = $"ПІБ клієнта: {UserSession.CurrentUserFullname}\nEmail: {UserSession.CurrentUserEmail}\nНомер телефона: {UserSession.CurrentUserPhone}";
+                
                 btnConfirmOrder.Enabled = true;
             }
             else

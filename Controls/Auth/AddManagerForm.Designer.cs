@@ -191,7 +191,6 @@
             ForeColor = Color.White;
             Name = "AddManagerForm";
             Text = "Add Manager";
-            Load += AddManagerForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

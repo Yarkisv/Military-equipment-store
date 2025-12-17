@@ -74,7 +74,7 @@ namespace MilitaryEquipmentStore.Models
         {
             List<Product> products = new List<Product>();
 
-            string query = "SELECT type, article, name_, price, description_ FROM products";
+            string query = "select type, article, name_, price, description_ from products";
 
             using (var reader = DbConfig.ReadData(query))
             {
@@ -98,7 +98,7 @@ namespace MilitaryEquipmentStore.Models
         }
         public static Product GetByArticle(string article)
         {
-            string query = $"SELECT type, article, name_, price, description_ FROM products WHERE article = '{article}'";
+            string query = $"select type, article, name_, price, description_ from products where article = '{article}'";
 
             using (var reader = DbConfig.ReadData(query))
             {

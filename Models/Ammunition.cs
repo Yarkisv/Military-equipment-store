@@ -21,7 +21,7 @@ namespace MilitaryEquipmentStore.Models
         {
             var result = new Dictionary<string, Ammunition>();
             string query = @"
-            SELECT 
+            select 
                 p.product_id,
                 p.type,
                 p.article,
@@ -36,9 +36,9 @@ namespace MilitaryEquipmentStore.Models
                 a.effective_range,
                 a.storage_temp,
                 a.shelf_life
-            FROM products p
-            JOIN ammunition a ON p.article = a.article
-            WHERE p.type = 'боєприпаси';";
+            from products p
+            join ammunition a on p.article = a.article
+            where p.type = 'боєприпаси';";
 
             using (var reader = DbConfig.ReadData(query))
             {
@@ -88,7 +88,7 @@ namespace MilitaryEquipmentStore.Models
 
         public static Ammunition GetByArticle(string article)
         {
-            string query = $"SELECT * FROM ammunition WHERE article = '{article}'";
+            string query = $"select * from ammunition where article = '{article}'";
 
             using (var reader = DbConfig.ReadData(query))
             {

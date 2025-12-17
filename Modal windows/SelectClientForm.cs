@@ -62,13 +62,12 @@ namespace MilitaryEquipmentStore.Modal_windows
                     SelectedClientName = reader.GetString("fullname");
                     SelectedClientPhone = reader.GetString("phonenumber");
 
-                    lblClientInfo.Text = $"Клієнт знайдений:\n" +
-                                        $"Ім'я: {SelectedClientName}\n" +
-                                        $"Email: {SelectedClientEmail}\n" +
-                                        $"Телефон: {SelectedClientPhone}";
+                    lblClientInfo.Text = $"Клієнт знайдений:\nІм'я: {SelectedClientName}\nEmail: {SelectedClientEmail}\nТелефон: {SelectedClientPhone}";
 
                     UserSession.CurrentUserId = SelectedClientId;
                     UserSession.CurrentUserEmail = SelectedClientEmail;
+                    UserSession.CurrentUserFullname = SelectedClientName;
+                    UserSession.CurrentUserPhone = SelectedClientPhone;
 
                     btnSelect.Enabled = true;
                 }

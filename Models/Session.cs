@@ -10,6 +10,8 @@ namespace MilitaryEquipmentStore.Models
     {
         public static string Role { get; set; }
         public static int CurrentUserId { get; set; }
+        public static string CurrentUserFullname { get; set; }
+        public static string CurrentUserPhone { get; set; }
         public static string CurrentUserEmail { get; set; }
     }
 }

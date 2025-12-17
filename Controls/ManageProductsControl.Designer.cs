@@ -99,14 +99,14 @@
             // 
             Type.DataPropertyName = "Type";
             Type.FillWeight = 120F;
-            Type.HeaderText = "Type";
+            Type.HeaderText = "Категорія";
             Type.Name = "Type";
             Type.ReadOnly = true;
             // 
             // Article
             // 
             Article.DataPropertyName = "Article";
-            Article.HeaderText = "Article";
+            Article.HeaderText = "Артикль";
             Article.Name = "Article";
             Article.ReadOnly = true;
             // 
@@ -114,7 +114,7 @@
             // 
             ProductName.DataPropertyName = "Name";
             ProductName.FillWeight = 180F;
-            ProductName.HeaderText = "Product Name";
+            ProductName.HeaderText = "Назва товара";
             ProductName.Name = "ProductName";
             ProductName.ReadOnly = true;
             // 
@@ -122,7 +122,7 @@
             // 
             Price.DataPropertyName = "Price";
             Price.FillWeight = 90F;
-            Price.HeaderText = "Price ($)";
+            Price.HeaderText = "Ціна (грн.)";
             Price.Name = "Price";
             Price.ReadOnly = true;
             // 
@@ -130,26 +130,26 @@
             // 
             Description.DataPropertyName = "Description";
             Description.FillWeight = 220F;
-            Description.HeaderText = "Description";
+            Description.HeaderText = "Опис";
             Description.Name = "Description";
             Description.ReadOnly = true;
             // 
             // Edit
             // 
             Edit.FillWeight = 70F;
-            Edit.HeaderText = "Edit";
+            Edit.HeaderText = "Редагувати";
             Edit.Name = "Edit";
             Edit.ReadOnly = true;
-            Edit.Text = "Edit";
+            Edit.Text = "Редагувати";
             Edit.UseColumnTextForButtonValue = true;
             // 
             // Delete
             // 
             Delete.FillWeight = 70F;
-            Delete.HeaderText = "Delete";
+            Delete.HeaderText = "Видалити";
             Delete.Name = "Delete";
             Delete.ReadOnly = true;
-            Delete.Text = "Delete";
+            Delete.Text = "Видалити";
             Delete.UseColumnTextForButtonValue = true;
             // 
             // panelTop
@@ -201,6 +201,7 @@
         }
 
         #endregion
+
         private Button addProductBtn;
         private DataGridView dataGridProducts;
         private DataGridViewTextBoxColumn Type;

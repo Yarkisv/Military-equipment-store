@@ -70,11 +70,6 @@ namespace MilitaryEquipmentStore.Controls
             LoadOrders();
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadOrders();
-        }
-
         private void btnUpdateStatus_Click(object sender, EventArgs e)
         {
             try
@@ -124,20 +119,12 @@ namespace MilitaryEquipmentStore.Controls
 
         private void ShowOrderDetails(int orderId, string customerName)
         {
-            try
-            {
-                OrderDetailsForm itemsForm = new OrderDetailsForm(orderId, customerName);
-                itemsForm.ShowDialog();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($"Помилка при завантаженні товарів замовлення: {exception.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+            OrderDetailsForm itemsForm = new OrderDetailsForm(orderId, customerName);
 
-        public void RefreshData()
-        {
-            LoadOrders();
+            if (itemsForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadOrders();
+            }
         }
     }
 }

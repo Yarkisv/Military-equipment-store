@@ -32,10 +32,7 @@ namespace MilitaryEquipmentStore.Forms
                     DbConfig.Close();
                 }
 
-                string productQuery = $@"
-                    select p.* 
-                    from products p 
-                    where p.article = '{productArticle}'";
+                string productQuery = $"select p.* from products p where p.article = '{productArticle}'";
 
                 using (var reader = DbConfig.ReadData(productQuery))
                 {
@@ -52,6 +49,9 @@ namespace MilitaryEquipmentStore.Forms
 
                         txtDescription.Text = reader["description_"] != DBNull.Value ? reader["description_"].ToString() : "Опис відсутній";
 
+                        string availability = reader["is_available"].ToString();
+                        SetAvailabilityStatus(availability);
+
                         reader.Close();
                         DbConfig.Close();
 
@@ -67,6 +67,26 @@ namespace MilitaryEquipmentStore.Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Помилка: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetAvailabilityStatus(string availability)
+        {
+            if (availability == "Так")
+            {
+                lblAvailability.Text = "В наявності";
+                lblAvailability.ForeColor = Color.LimeGreen;
+                btnAddToCart.Enabled = true;
+                btnAddToCart.Text = "Додати до замовлення";
+                btnAddToCart.BackColor = Color.Black;
+            }
+            else
+            {
+                lblAvailability.Text = "Немає в наявності";
+                lblAvailability.ForeColor = Color.Red;
+                btnAddToCart.Enabled = false;
+                btnAddToCart.Text = "Товар недоступний";
+                btnAddToCart.BackColor = Color.Gray;
             }
         }
 

@@ -64,6 +64,9 @@
     <Compile Update="Modal windows\AddProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Modal windows\DeactivateManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Modal windows\EditManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>

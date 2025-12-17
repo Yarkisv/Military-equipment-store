@@ -32,14 +32,15 @@ namespace MilitaryEquipmentStore.Models
         {
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
             
-            string query = $"insert into users (fullname, hashPassword, phonenumber, email_, role_) values ('{fullname}', '{hashedPassword}', '{phone}', '{email}', '{role}');";
+            string query = $@"insert into users (fullname, hashPassword, phonenumber, email_, role_) 
+                              values ('{fullname}', '{hashedPassword}', '{phone}', '{email}', '{role}');";
 
             DbConfig.ExecuteQuery(query);
         }
 
         public static bool Exists(string email)
         {
-            string query = $"SELECT COUNT(*) FROM users WHERE email_ = '{email}'";
+            string query = $"select count(*) from users where email_ = '{email}'";
 
             using (var reader = DbConfig.ReadData(query))
             {
@@ -55,7 +56,7 @@ namespace MilitaryEquipmentStore.Models
 
         public static User GetById(int id)
         {
-            string query = $"SELECT fullname, email_, phonenumber FROM users WHERE id = {id}";
+            string query = $"select fullname, email_, phonenumber from users where id = {id}";
 
             using (var reader = DbConfig.ReadData(query))
             {

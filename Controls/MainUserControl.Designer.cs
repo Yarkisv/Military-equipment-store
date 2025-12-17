@@ -38,8 +38,8 @@
             panelSidebar = new Panel();
             separator2 = new Panel();
             separator1 = new Panel();
-            labelAdmin = new Label();
             labelCatalog = new Label();
+            labelAdmin = new Label();
             panelSidebar.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             btnElectronics.Font = new Font("Segoe UI", 10F);
             btnElectronics.ForeColor = Color.White;
             btnElectronics.ImageAlign = ContentAlignment.MiddleLeft;
-            btnElectronics.Location = new Point(10, 215);
+            btnElectronics.Location = new Point(10, 207);
             btnElectronics.Margin = new Padding(3, 0, 3, 0);
             btnElectronics.Name = "btnElectronics";
             btnElectronics.Padding = new Padding(10, 0, 0, 0);
@@ -77,7 +77,7 @@
             btnTransport.Font = new Font("Segoe UI", 10F);
             btnTransport.ForeColor = Color.White;
             btnTransport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTransport.Location = new Point(10, 260);
+            btnTransport.Location = new Point(10, 252);
             btnTransport.Margin = new Padding(3, 0, 3, 0);
             btnTransport.Name = "btnTransport";
             btnTransport.Padding = new Padding(10, 0, 0, 0);
@@ -100,7 +100,7 @@
             btnAmmunition.Font = new Font("Segoe UI", 10F);
             btnAmmunition.ForeColor = Color.White;
             btnAmmunition.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAmmunition.Location = new Point(10, 305);
+            btnAmmunition.Location = new Point(10, 297);
             btnAmmunition.Margin = new Padding(3, 0, 3, 0);
             btnAmmunition.Name = "btnAmmunition";
             btnAmmunition.Padding = new Padding(10, 0, 0, 0);
@@ -123,7 +123,7 @@
             manageManagersBtn.Font = new Font("Segoe UI", 10F);
             manageManagersBtn.ForeColor = Color.White;
             manageManagersBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            manageManagersBtn.Location = new Point(10, 80);
+            manageManagersBtn.Location = new Point(10, 71);
             manageManagersBtn.Margin = new Padding(3, 0, 3, 0);
             manageManagersBtn.Name = "manageManagersBtn";
             manageManagersBtn.Padding = new Padding(10, 0, 0, 0);
@@ -146,7 +146,7 @@
             manageProductsBtn.Font = new Font("Segoe UI", 10F);
             manageProductsBtn.ForeColor = Color.White;
             manageProductsBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            manageProductsBtn.Location = new Point(10, 125);
+            manageProductsBtn.Location = new Point(10, 116);
             manageProductsBtn.Margin = new Padding(3, 0, 3, 0);
             manageProductsBtn.Name = "manageProductsBtn";
             manageProductsBtn.Padding = new Padding(10, 0, 0, 0);
@@ -169,7 +169,7 @@
             manageOrdersBtn.Font = new Font("Segoe UI", 10F);
             manageOrdersBtn.ForeColor = Color.White;
             manageOrdersBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            manageOrdersBtn.Location = new Point(10, 170);
+            manageOrdersBtn.Location = new Point(10, 161);
             manageOrdersBtn.Margin = new Padding(3, 0, 3, 0);
             manageOrdersBtn.Name = "manageOrdersBtn";
             manageOrdersBtn.Padding = new Padding(10, 0, 0, 0);
@@ -192,13 +192,13 @@
             btnCart.Font = new Font("Segoe UI", 10F);
             btnCart.ForeColor = Color.White;
             btnCart.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCart.Location = new Point(10, 350);
+            btnCart.Location = new Point(10, 342);
             btnCart.Margin = new Padding(3, 0, 3, 0);
             btnCart.Name = "btnCart";
             btnCart.Padding = new Padding(10, 0, 0, 0);
             btnCart.Size = new Size(200, 45);
             btnCart.TabIndex = 7;
-            btnCart.Text = "🛒 Кошик";
+            btnCart.Text = "\U0001f6d2 Замовлення";
             btnCart.TextAlign = ContentAlignment.MiddleLeft;
             btnCart.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCart.UseVisualStyleBackColor = false;
@@ -229,7 +229,7 @@
             // 
             separator2.BackColor = Color.FromArgb(50, 50, 50);
             separator2.Dock = DockStyle.Top;
-            separator2.Location = new Point(10, 155);
+            separator2.Location = new Point(10, 206);
             separator2.Name = "separator2";
             separator2.Size = new Size(200, 1);
             separator2.TabIndex = 9;
@@ -238,10 +238,22 @@
             // 
             separator1.BackColor = Color.FromArgb(50, 50, 50);
             separator1.Dock = DockStyle.Top;
-            separator1.Location = new Point(10, 40);
+            separator1.Location = new Point(10, 70);
             separator1.Name = "separator1";
             separator1.Size = new Size(200, 1);
             separator1.TabIndex = 8;
+            // 
+            // labelCatalog
+            // 
+            labelCatalog.Dock = DockStyle.Top;
+            labelCatalog.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelCatalog.ForeColor = Color.FromArgb(150, 150, 150);
+            labelCatalog.Location = new Point(10, 40);
+            labelCatalog.Name = "labelCatalog";
+            labelCatalog.Size = new Size(200, 30);
+            labelCatalog.TabIndex = 10;
+            labelCatalog.Text = "КАТАЛОГ ТОВАРІВ";
+            labelCatalog.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // labelAdmin
             // 
@@ -254,18 +266,6 @@
             labelAdmin.TabIndex = 0;
             labelAdmin.Text = "АДМІНІСТРУВАННЯ";
             labelAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // labelCatalog
-            // 
-            labelCatalog.Dock = DockStyle.Top;
-            labelCatalog.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            labelCatalog.ForeColor = Color.FromArgb(150, 150, 150);
-            labelCatalog.Location = new Point(10, 41);
-            labelCatalog.Name = "labelCatalog";
-            labelCatalog.Size = new Size(200, 30);
-            labelCatalog.TabIndex = 10;
-            labelCatalog.Text = "КАТАЛОГ ТОВАРІВ";
-            labelCatalog.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // MainUserControl
             // 

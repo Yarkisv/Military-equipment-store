@@ -40,14 +40,14 @@ namespace MilitaryEquipmentStore.Controls
         {
             var article = dataGridProducts.Rows[e.RowIndex].Cells["Article"].Value.ToString();
 
-            if (dataGridProducts.Columns[e.ColumnIndex].HeaderText.Equals("Edit"))
+            if (dataGridProducts.Columns[e.ColumnIndex].HeaderText.Equals("Редагувати"))
             {
                 EditProductForm editProductForm = new EditProductForm(article);
 
                 editProductForm.ShowDialog();
             }
 
-            if (dataGridProducts.Columns[e.ColumnIndex].HeaderText.Equals("Delete"))
+            if (dataGridProducts.Columns[e.ColumnIndex].HeaderText.Equals("Видалити"))
             {
                 var result = MessageBox.Show(
                     "Delete product?",

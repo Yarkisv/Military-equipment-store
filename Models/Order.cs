@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace MilitaryEquipmentStore.Models
 {
@@ -73,11 +72,14 @@ namespace MilitaryEquipmentStore.Models
             string formattedDate = orderDate.Value.ToString("yyyy-MM-dd");
             string formattedPrice = totalPrice.ToString("0.00", CultureInfo.InvariantCulture);
 
-            string query = $"insert into orders (order_date, client_id, quantity, total_price, status_) values ('{formattedDate}', '{clientId}', '{quantity}', '{formattedPrice}', 'оформлено')";
+            string query = @$"insert into orders (order_date, client_id, quantity, total_price, status_) 
+                              values ('{formattedDate}', '{clientId}', '{quantity}', '{formattedPrice}', 'оформлено')";
 
             long orderId = DbConfig.ExecuteQueryWithLastId(query);
 
             Order.InsertOrderItems(orderId);
+
+            UpdateProductAvailability();
         }
 
         private static void InsertOrderItems(long orderId)
@@ -86,7 +88,18 @@ namespace MilitaryEquipmentStore.Models
             {
                 string price = item.Price.ToString("0.00", CultureInfo.InvariantCulture);
 
-                string query = $"insert into ordered_items (order_id, product_id, quantity, price) values ('{orderId}', '{item.ProductId}', '{item.Quantity}', '{price}')";
+                string query = @$"insert into ordered_items (order_id, product_id, quantity, price) 
+                                  values ('{orderId}', '{item.ProductId}', '{item.Quantity}', '{price}')";
+
+                DbConfig.ExecuteQuery(query);
+            }
+        }
+
+        private static void UpdateProductAvailability(string newAvailability = "Ні")
+        {
+            foreach (var item in orderItems)
+            {
+                string query = $"update products set is_available = '{newAvailability}' where product_id = {item.ProductId}";
 
                 DbConfig.ExecuteQuery(query);
             }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MilitaryEquipmentStore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b4fbcb9283345d57c429da30fffdd6aae48490d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0791eba6b56129ff7d59afad1e9b55e0e95a32a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MilitaryEquipmentStore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MilitaryEquipmentStore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,23 +22,28 @@ namespace MilitaryEquipmentStore.Modal_windows
             panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
         }
 
-        private void AddManagerForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void addManager_Click(object sender, EventArgs e)
         {
-            string newManagerFullname = textBox1.Text;
-            string newManagerEmail = textBox2.Text;
-            string newManagerPhone = textBox3.Text;
-            string newManagerPassword = textBox4.Text;
+            try
+            {
+                string newManagerFullname = textBox1.Text;
+                string newManagerEmail = textBox2.Text;
+                string newManagerPhone = textBox3.Text;
+                string newManagerPassword = textBox4.Text;
 
-            string newManagerHashedPassword = BCrypt.Net.BCrypt.HashPassword(newManagerPassword);
+                string newManagerHashedPassword = BCrypt.Net.BCrypt.HashPassword(newManagerPassword);
 
-            User.CreateUser(newManagerFullname, newManagerHashedPassword, newManagerPhone, newManagerEmail, "manager");
+                User.CreateUser(newManagerFullname, newManagerHashedPassword, newManagerPhone, newManagerEmail, "manager");
 
-            this.Hide();
+                MessageBox.Show("Нового менеджера було успішно додано");
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при додаванні менеджера: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
     }
 }

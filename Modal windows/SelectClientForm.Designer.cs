@@ -26,14 +26,6 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        /// 
-        private TextBox txtEmail;
-        private Button btnSearch;
-        private Label lblEmail;
-        private Label lblClientInfo;
-        private Button btnSelect;
-        private Button btnCancel;
-        private Button btnAddClient;
         private void InitializeComponent()
         {
             txtEmail = new TextBox();
@@ -47,26 +39,36 @@
             // 
             // txtEmail
             // 
+            txtEmail.BackColor = Color.FromArgb(40, 40, 40);
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.ForeColor = Color.White;
             txtEmail.Location = new Point(75, 14);
             txtEmail.Margin = new Padding(4, 3, 4, 3);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(233, 23);
+            txtEmail.Size = new Size(381, 23);
             txtEmail.TabIndex = 4;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(315, 12);
+            btnSearch.BackColor = Color.FromArgb(40, 40, 40);
+            btnSearch.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+            btnSearch.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(464, 12);
             btnSearch.Margin = new Padding(4, 3, 4, 3);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(88, 27);
             btnSearch.TabIndex = 3;
             btnSearch.Text = "Пошук";
-            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
+            lblEmail.BackColor = Color.FromArgb(30, 30, 30);
+            lblEmail.ForeColor = Color.White;
             lblEmail.Location = new Point(14, 17);
             lblEmail.Margin = new Padding(4, 0, 4, 0);
             lblEmail.Name = "lblEmail";
@@ -77,6 +79,8 @@
             // lblClientInfo
             // 
             lblClientInfo.AutoSize = true;
+            lblClientInfo.BackColor = Color.FromArgb(30, 30, 30);
+            lblClientInfo.ForeColor = Color.White;
             lblClientInfo.Location = new Point(14, 58);
             lblClientInfo.Margin = new Padding(4, 0, 4, 0);
             lblClientInfo.Name = "lblClientInfo";
@@ -86,43 +90,59 @@
             // 
             // btnSelect
             // 
+            btnSelect.BackColor = Color.FromArgb(40, 40, 40);
             btnSelect.Enabled = false;
-            btnSelect.Location = new Point(125, 92);
+            btnSelect.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+            btnSelect.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            btnSelect.FlatStyle = FlatStyle.Flat;
+            btnSelect.ForeColor = Color.White;
+            btnSelect.Location = new Point(272, 92);
             btnSelect.Margin = new Padding(4, 3, 4, 3);
             btnSelect.Name = "btnSelect";
             btnSelect.Size = new Size(88, 27);
             btnSelect.TabIndex = 1;
             btnSelect.Text = "Обрати";
-            btnSelect.UseVisualStyleBackColor = true;
+            btnSelect.UseVisualStyleBackColor = false;
             btnSelect.Click += btnSelect_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(315, 92);
+            btnCancel.BackColor = Color.FromArgb(40, 40, 40);
+            btnCancel.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+            btnCancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(464, 92);
             btnCancel.Margin = new Padding(4, 3, 4, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(88, 27);
             btnCancel.TabIndex = 0;
             btnCancel.Text = "Скасувати";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // btnAddClient
             // 
-            btnAddClient.Location = new Point(220, 92);
+            btnAddClient.BackColor = Color.FromArgb(40, 40, 40);
+            btnAddClient.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+            btnAddClient.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            btnAddClient.FlatStyle = FlatStyle.Flat;
+            btnAddClient.ForeColor = Color.White;
+            btnAddClient.Location = new Point(368, 92);
             btnAddClient.Margin = new Padding(4, 3, 4, 3);
             btnAddClient.Name = "btnAddClient";
             btnAddClient.Size = new Size(88, 27);
             btnAddClient.TabIndex = 6;
             btnAddClient.Text = "Додати";
-            btnAddClient.UseVisualStyleBackColor = true;
+            btnAddClient.UseVisualStyleBackColor = false;
             btnAddClient.Click += btnAddClient_Click;
             // 
             // SelectClientForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(416, 133);
+            BackColor = Color.FromArgb(30, 30, 30);
+            ClientSize = new Size(565, 133);
             Controls.Add(btnAddClient);
             Controls.Add(btnCancel);
             Controls.Add(btnSelect);
@@ -130,6 +150,7 @@
             Controls.Add(btnSearch);
             Controls.Add(txtEmail);
             Controls.Add(lblEmail);
+            ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
@@ -142,5 +163,13 @@
         }
 
         #endregion
+
+        private TextBox txtEmail;
+        private Button btnSearch;
+        private Label lblEmail;
+        private Label lblClientInfo;
+        private Button btnSelect;
+        private Button btnCancel;
+        private Button btnAddClient;
     }
 }
